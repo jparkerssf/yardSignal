@@ -1,0 +1,31 @@
+<ion-view view-title="{{'VIEW_TITLES.LOGIN' | translate }}" hide-nav-bar="false">
+      <ion-nav-title>
+        {{'VIEW_TITLES.APP_NAME' | translate}}
+        <!--div style="height:85%">
+            <img src="img/IB Logo.png" class="padding-horizontal" width="100%" style="max-width:210px" id="nav-logo">
+        </div-->
+    </ion-nav-title>
+  <ion-content>
+      <div class="padding text-center results-title">
+        {{'LOGIN_CTRL.NAV_BAR_TITLE' | translate}}
+    </div>
+    <form class="padding" name="loginForm" novalidate ng-submit="doLogin(loginForm)">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label item-text-wrap">{{'LOGIN_CTRL.EMAIL_FIELD' | translate }}</span>
+          <input type="email" ng-model="loginData.email"  required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label item-text-wrap">{{'LOGIN_CTRL.PASSWORD_FIELD' | translate }}</span>
+          <input type="password" ng-model="loginData.password" required>
+        </label>
+        <ion-checkbox ng-model="checkbox.rememberMe" class="no-border checkbox-calm">{{'LOGIN_CTRL.REMEMBER_ME' | translate}}</ion-checkbox>
+
+      </div>
+      <button class="button spacecaps button-block button-energized" type="submit" ion-track-tap="Login-tap" ion-track-data="{ mockData: 'User tapped Login'}">{{'LOGIN_CTRL.SUBMIT_BUTTON' | translate}}</button>
+    </form>
+    <div class="padding-horizontal">
+      <button class="button spacecaps button-block square-button button-royal" ng-click="register()">{{'REGISTER_CTRL.SUBMIT_BUTTON' | translate}}</button>
+    </div>
+  </ion-content>
+</ion-view>

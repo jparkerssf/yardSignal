@@ -1,0 +1,47 @@
+<ion-view view-title="{{'VIEW_TITLES.SETTINGS' | translate}}" hide-nav-bar="false">
+    <ion-nav-title>
+        <div style="height:85%">
+            <img src="img/IB Logo.png" class="padding-horizontal" width="100%" style="max-width:210px" id="nav-logo">
+        </div>
+    </ion-nav-title>
+    <ion-content class="title">
+        <div class="padding h3 text-center">
+            {{'SETTINGS.TITLE' | translate}}
+        </div>
+        <div class="list">
+            <label class="item item-radio">
+            <input ng-model="test.test" value="en" type="radio" name="group" ng-click="changeLanguage('en')">
+                <div class="radio-content">
+                    <div class="item-content">
+                        English
+                    </div>
+                    <i class="radio-icon ion-checkmark"></i>
+                </div>
+            </label>
+            <label class="item item-radio">
+            <input ng-model="test.test" value="es" type="radio" name="group" ng-click="changeLanguage('es')">
+                <div class="radio-content">
+                    <div class="item-content">
+                        Español
+                    </div>
+                    <i class="radio-icon ion-checkmark"></i>
+                </div>
+            </label>
+            <label class="item item-radio">
+            <input ng-model="test.test" value="cmn" type="radio" name="group" ng-click="changeLanguage('cmn')">
+                <div class="radio-content">
+                    <div class="item-content">
+                        中國（北京話）
+                    </div>
+                    <i class="radio-icon ion-checkmark"></i>
+                </div>
+            </label>
+        </div>
+        <!--div>
+            {{test.test}}
+        </div-->
+        <div class="padding-horizontal">
+            <button class="button button-block square-button button-energized" ng-click="continue()">{{'SETTINGS.CREDITS.HEADER' | translate}}</button>
+        </div>
+    </ion-content>
+</ion-view>

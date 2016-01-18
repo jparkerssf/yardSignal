@@ -1,0 +1,46 @@
+<ion-view view-title="{{'VIEW_TITLES.HIGH_LEVEL_INSTANT_RESULTS' | translate}}">
+    <ion-nav-title>
+        <div style="height:85%">
+            <img src="img/IB Logo.png" class="padding-horizontal" width="100%" style="max-width:210px" id="nav-logo">
+        </div>
+    </ion-nav-title>
+    <ion-nav-buttons side="right" >
+        <button class="button button-icon button-clear ion-edit edit-pen" nav-direction="back" ng-click="editButton()"></button>
+    </ion-nav-buttons>
+    <ion-content class="padding ">
+        <div class="padding">
+            <h3 class='text-center calm padding-bottom'> {{'RESULTS.INSTANT.TITLE' | translate }}</h3>
+            <div class="row item row-center" style="height: 45px;">
+                <div class="col col-50 item-text-wrap">{{'RESULTS.INSTANT.MONTHLYIN' | translate }}</div>
+                <div class="col col-40">{{highLevel.data.monthlyIncome | currency:"$":0}}</div>
+                <!--a class="col col-10 button button-small button-icon icon ion-ios-help-outline" ng-click="showPopup($event, 'DATA.INSTANT.INFO' ,true)"></a-->
+            </div>
+            <div class="row item">
+                <div class="col col-50 col-center item-text-wrap">{{'DATA.HOUSING.TITLE' | translate}}</div>
+                <div class="col col-40 col-center">{{highLevel.data.housing | currency:"$":0}}</div>
+                <a class="col col-10 button button-small button-icon icon ion-ios-help-outline i-button" style="right: 4px" ng-click="showPopup($event, 'DATA.HOUSING.INFO' ,true)"></a>
+            </div>
+            <div class="row item">
+                <div class="col col-50 col-center item-text-wrap">{{'DATA.TRANSPORTATION.TITLE' | translate}}</div>
+                <div class="col col-40 col-center">{{highLevel.data.transportation | currency:"$":0}}</div>
+                <a class="col col-10 button button-small button-icon icon ion-ios-help-outline i-button" style="right: 4px" ng-click="showPopup($event, 'DATA.TRANSPORTATION.INFO' ,true)"></a>
+            </div>
+            <div class="row item">
+                <div class="col col-50 col-center item-text-wrap">{{'DATA.FOOD.TITLE' | translate}}</div>
+                <div class="col col-40 col-center">{{highLevel.data.food | currency:"$":0}}</div>
+                <a class="col col-10 button button-small button-icon icon ion-ios-help-outline i-button" style="right: 4px" ng-click="showPopup($event, 'DATA.FOOD.INFO' ,true)"></a>
+            </div>
+            <div class="row item">
+                <div class="col col-50 col-center item-text-wrap">{{'DATA.DISCRETIONARY.TITLE' | translate}}</div>
+                <div class="col col-40 col-center">{{highLevel.data.discretionary | currency:"$":0}}</div>
+                 <a class="col col-10 button button-small button-icon icon ion-ios-help-outline i-button" style="right: 4px" ng-click="showPopup($event, 'DATA.DISCRETIONARY.INFO' ,true)"></a>
+            </div>
+            <div class="row item bottom-item">
+                <div class="col col-50 col-center item-text-wrap">{{'DATA.SAVINGS.TITLE' | translate}}</div>
+                <div class="col col-40 col-center">{{highLevel.data.savingsAndOther | currency:"$":0}}</div>
+                <a class="col col-10 button button-small button-icon icon ion-ios-help-outline i-button" style="right: 4px" ng-click="showPopup($event, 'DATA.SAVINGS.INFO' ,true)"></a>
+            </div>
+        </div>
+        <button class="button button-block spacecaps square-button square-button button-energized zebit-button" ng-click="continue()">{{continueButtonDisplay}}</button>
+    </ion-content>
+</ion-view>

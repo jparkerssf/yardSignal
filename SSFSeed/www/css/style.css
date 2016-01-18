@@ -1,0 +1,146 @@
+/* Empty. Add your own CSS if you like */
+.updateBackgroundColor {
+    background-color: #33ccff;
+}
+.wiz-background {
+    background-color: rgb(105, 105, 105);
+    opacity: 0.5;
+}
+.list-money {
+    float: right;
+}
+.edit-pen {
+    font-size: 10px;
+}
+.form-instant-input-text {
+    font-size: 50px;
+}
+.landingImage {
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3.5%;
+}
+#nav-logo {
+    position: relative;
+    top: 9%;
+}
+.square-button {
+    border-radius: 0px; 
+}
+.zebit-button {
+    border-radius: 0px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 18px;
+}
+#landing1 {
+    height: 8.4%;
+    margin-top: 8%;
+    width: 65%;
+}
+#landing2 {
+    height: 8.4%;
+    width: 65%;
+    margin-top: 5%;
+}
+#landingText {
+    margin-top: 14%;
+}
+.drop-box-content {
+    width: 100%;
+    text-align: left;
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.text-align-center {
+    text-align: center;
+}
+.item-select {
+    text-align: left;
+}
+.white {
+    color: white;
+}
+.spacecaps {
+    letter-spacing: 0.3em;
+    font-variant: small-caps;
+}
+.checkbox {
+    font-size: 1.3em;
+    position: relative;
+    bottom: 0.3em;
+    left: 0.7em;
+}
+.results-title {
+    font-size: 20px;
+}
+#wizard3 {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+#imgtest {
+    height: inherit;
+}
+.savings-borders {
+    border-left: 1px solid #ccc; 
+    border-right: 1px solid #ccc;
+}
+#savings-key-center {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.i-button {
+    position: relative;
+    top: 3px;
+    right: 1px;
+}
+.i-button2 {
+    position: relative;
+    top: 3px !important;
+    right: 1px;
+}
+.bottom-item {
+    padding-bottom: 0px;
+}
+.underline {
+    text-decoration: underline;
+}
+h7 {
+    color: red;
+}
+.letter-spacing {
+    letter-spacing: 0.3em;
+}
+.calm-bg {
+    color: white;
+}
+.custom-input {
+    padding-bottom:2.5px; 
+    position:relative; 
+    right:6%
+}
+.custom-item {
+    padding-bottom: 0px;
+}
+.row-divider {
+    padding-top: 0px;
+}
+.has-errors {
+  border: 1px solid red;
+}
+@media (min-width: 567px) {
+    p { font-size: 20px; }
+}
+
+.online-green{
+    color:greenyellow !important;
+}
+
+.offline-red {
+    color:red !important;
+}

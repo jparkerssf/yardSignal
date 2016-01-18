@@ -1,0 +1,183 @@
+<ion-view view-title="{{'FORMS.HEADER' | translate }}" hide-nav-bar="false">
+    <ion-nav-title>
+        <div style="height:85%">
+            <img src="img/IB Logo.png" class="padding-horizontal" width="100%" style="max-width:210px" id="nav-logo">
+        </div>
+    </ion-nav-title>
+    <ion-nav-buttons side="right" >
+        <button class="button button-icon button-clear ion-ios-information-outline" ui-sref="app.wizards-custom"></button>
+    </ion-nav-buttons>
+    <ion-content class="padding">
+        <div class="h3 calm text-align-center">{{'FORMS.CUSTOM.TITLE' | translate }}</div>
+            <form name="customForm" class="padding-top" novalidate ng-submit="submitCustomForm(customForm)">
+            
+                <div class="item  calm-bg spacecaps item-divider">
+                    {{'DATA.HOUSING.TITLE_CAPS' | translate }}
+                </div>
+                <div class="item row">
+                    <label class="item-input item-input-inset row">
+                        <div class="col-50 col col-center item-text-wrap">{{'DATA.HOUSING.1' | translate }}:</div>
+                        <div class="col col-10 col-center">$</div>
+                        <input class="col-40 col col-center custom-input" type="tel" pattern="[0-9]*" name="rentMortgage" ng-model="customInputs.rentMortgage" required currency-mask>
+                        <i class="icon ion-alert assertive" style="font-size:20px;position:relative;top:5px" ng-show="customForm.rentMortgage.$invalid && customForm.$submitted"></i>
+                        <!--<pre>{{customInputs.rentMortgage | currency:"$":0}}</pre>-->
+                    </label>
+                    <a class="button col col-10 button-small col-center button-icon icon ion-ios-help-outline " ng-click="showPopup($event, 'DATA.HOUSING.1_INFO' ,true)"></a>
+                </div>
+                <div class="item row">
+                    <label class="item-input row">
+                        <div class="col-50 col col-center item-text-wrap">{{'DATA.HOUSING.2' | translate }}</div>
+                        <div class="col col-10 col-center">$</div>
+                        <input class="col-40 col col-center custom-input" type="tel" pattern="[0-9]*" name="utilities" ng-model="customInputs.utilities" required currency-mask>
+                        <i class="icon ion-alert assertive" style="font-size:20px;position:relative;top:5px" ng-show="customForm.utilities.$invalid && customForm.$submitted"></i>
+                    </label>
+                    <a class="button col col-10 button-small col-center button-icon icon ion-ios-help-outline " ng-click="showPopup($event, 'DATA.HOUSING.2_INFO' ,true)"></a>
+                </div>
+                <div class="item row">
+                    <label class="item-input row">
+                        <div class="col-50 col col-center item-text-wrap">{{'DATA.HOUSING.3' | translate }}</div>
+                        <div class="col col-10 col-center">$</div>
+                        <input class="col-40 col col-center custom-input" type="tel" pattern="[0-9]*" name="cellularPhone" ng-model="customInputs.cellularPhone" required currency-mask>
+                        <i class="icon ion-alert assertive" style="font-size:20px;position:relative;top:5px" ng-show="customForm.cellularPhone.$invalid && customForm.$submitted"></i>
+                    </label>
+                    <a class="button col col-10 button-small col-center button-icon icon ion-ios-help-outline " ng-click="showPopup($event, 'DATA.HOUSING.3_INFO' ,true)"></a>
+                </div>
+                <div class="item row">
+                    <label class="item-input row">
+                        <div class="col-50 col col-center item-text-wrap">{{'DATA.HOUSING.4' | translate }}</div>
+                        <div class="col col-10 col-center">$</div>
+                        <input class="col-40 col col-center custom-input" type="tel" pattern="[0-9]*" name="householdFurnishingOperationsAndSupplies" ng-model="customInputs.householdFurnishingOperationsAndSupplies" required currency-mask>
+                        <i class="icon ion-alert assertive" style="font-size:20px;position:relative;top:5px" ng-show="customForm.householdFurnishingOperationsAndSupplies.$invalid && customForm.$submitted"></i>
+                    </label>
+                    <a class="button col col-10 button-small col-center button-icon icon ion-ios-help-outline " ng-click="showPopup($event, 'DATA.HOUSING.4_INFO' ,true)"></a>
+                </div>
+                
+                <div class="item calm-bg spacecaps item-divider">
+                    {{'DATA.TRANSPORTATION.TITLE_CAPS' | translate }}
+                </div>
+                <div class="item row">
+                    <label class="item-input row">
+                        <div class="col-50 col col-center item-text-wrap">{{'DATA.TRANSPORTATION.1' | translate }}</div>
+                        <div class="col col-10 col-center">$</div>
+                        <input class="col-40 col col-center custom-input" type="tel" pattern="[0-9]*" name="transportation" ng-model="customInputs.transportation" required currency-mask>
+                        <i class="icon ion-alert assertive" style="font-size:20px;position:relative;top:5px" ng-show="customForm.transportation.$invalid && customForm.$submitted"></i>
+                    </label>
+                    <a class="button col col-10 button-small col-center button-icon icon ion-ios-help-outline " ng-click="showPopup($event, 'DATA.TRANSPORTATION.INFO' ,true)"></a>
+                </div>
+                
+                <div class="item calm-bg spacecaps item-divider">
+                    {{'DATA.FOOD.TITLE_CAPS' | translate }}
+                </div>
+                <div class="item row">
+                    <label class="item-input row">
+                        <div class="col-50 col col-center item-text-wrap">{{'DATA.FOOD.1' | translate }}</div>
+                        <div class="col col-10 col-center">$</div>
+                        <input class="col-40 col col-center custom-input" type="tel" pattern="[0-9]*" name="foodAtHome" ng-model="customInputs.foodAtHome" required currency-mask>
+                        <i class="icon ion-alert assertive" style="font-size:20px;position:relative;top:5px" ng-show="customForm.foodAtHome.$invalid && customForm.$submitted"></i>
+                    </label>
+                    <a class="button col col-10 button-small col-center button-icon icon ion-ios-help-outline " ng-click="showPopup($event, 'DATA.FOOD.1_INFO' ,true)"></a>
+                </div>
+                <div class="item row">
+                    <label class="item-input row">
+                        <div class="col-50 col col-center item-text-wrap">{{'DATA.FOOD.2' | translate }}</div>
+                        <div class="col col-10 col-center">$</div>
+                        <input class="col-40 col col-center custom-input" type="tel" pattern="[0-9]*" ng-model="customInputs.foodAwayFromHome" name="foodAwayFromHome" required currency-mask>
+                        <i class="icon ion-alert assertive" style="font-size:20px;position:relative;top:5px" ng-show="customForm.foodAwayFromHome.$invalid && customForm.$submitted"></i>
+                    </label>
+                    <a class="button col col-10 button-small col-center button-icon icon ion-ios-help-outline " ng-click="showPopup($event, 'DATA.FOOD.2_INFO' ,true)"></a>
+                </div>
+                <div class="item  row">
+                    <label class="item-input row">
+                        <div class="col-50 col col-center item-text-wrap">{{'DATA.FOOD.3' | translate }}</div>
+                        <div class="col col-10 col-center">$</div>
+                        <input class="col-40 col col-center custom-input" type="tel" pattern="[0-9]*" ng-model="customInputs.tobacco" name="tobacco" required currency-mask>
+                        <i class="icon ion-alert assertive" style="font-size:20px;position:relative;top:5px" ng-show="customForm.tobacco.$invalid && customForm.$submitted"></i>
+                    </label>
+                    <a class="button col col-10 button-small col-center button-icon icon ion-ios-help-outline " ng-click="showPopup($event, 'DATA.FOOD.3_INFO' ,true)"></a>
+                </div>
+                
+                <div class="item calm-bg spacecaps item-divider">
+                    {{'DATA.DISCRETIONARY.TITLE_CAPS' | translate }}
+                </div>
+                <div class="item row">
+                    <label class="item-input row">
+                        <div class="col-50 col col-center item-text-wrap">{{'DATA.DISCRETIONARY.1' | translate }}</div>
+                        <div class="col col-10 col-center">$</div>
+                        <input class="col-40 col col-center custom-input" type="tel" pattern="[0-9]*" ng-model="customInputs.entertainment" name="entertainment" required currency-mask>
+                        <i class="icon ion-alert assertive" style="font-size:20px;position:relative;top:5px" ng-show="customForm.entertainment.$invalid && customForm.$submitted"></i>
+                    </label>
+                    <a class="button col col-10 button-small col-center button-icon icon ion-ios-help-outline " ng-click="showPopup($event, 'DATA.DISCRETIONARY.1_INFO' ,true)"></a>
+                </div>
+                <div class="item row">
+                    <label class="item-input row">
+                        <div class="col-50 col col-center item-text-wrap">{{'DATA.DISCRETIONARY.2' | translate }}</div>
+                        <div class="col col-10 col-center">$</div>
+                        <input class="col-40 col col-center custom-input" type="tel" pattern="[0-9]*" ng-model="customInputs.apparel" name="apparel" required currency-mask>
+                        <i class="icon ion-alert assertive" style="font-size:20px;position:relative;top:5px" ng-show="customForm.apparel.$invalid && customForm.$submitted"></i>
+                    </label>
+                    <a class="button col col-10 button-small col-center button-icon icon ion-ios-help-outline " ng-click="showPopup($event, 'DATA.DISCRETIONARY.2_INFO' ,true)"></a>
+                </div>
+                <div class="item  row">
+                    <label class="item-input row">
+                        <div class="col-50 col col-center item-text-wrap">{{'DATA.DISCRETIONARY.3' | translate }}</div>
+                        <div class="col col-10 col-center">$</div>
+                        <input class="col-40 col col-center custom-input" type="tel" pattern="[0-9]*" ng-model="customInputs.education" name="education" required currency-mask>
+                        <i class="icon ion-alert assertive" style="font-size:20px;position:relative;top:5px" ng-show="customForm.education.$invalid && customForm.$submitted"></i>
+                    </label>
+                    <a class="button col col-10 button-small col-center button-icon icon ion-ios-help-outline " ng-click="showPopup($event, 'DATA.DISCRETIONARY.3_INFO' ,true)"></a>
+                </div>
+                
+                <div class="item calm-bg spacecaps item-divider">
+                    {{'DATA.SAVINGS.TITLE_CAPS' | translate }}
+                </div>
+                <div class="item row">
+                    <label class="item-input row">
+                        <div class="col-50 col col-center item-text-wrap">{{'DATA.SAVINGS.1' | translate }}</div>
+                        <div class="col col-10 col-center">$</div>
+                        <input class="col-40 col col-center custom-input" type="tel" pattern="[0-9]*" ng-model="customInputs.healthCare" name="healthCare" required currency-mask>
+                        <i class="icon ion-alert assertive" style="font-size:20px;position:relative;top:5px" ng-show="customForm.healthCare.$invalid && customForm.$submitted"></i>
+                    </label>
+                    <a class="button col col-10 button-small col-center button-icon icon ion-ios-help-outline " ng-click="showPopup($event, 'DATA.SAVINGS.INFO_1' ,true)"></a>
+                </div>
+                <div class="item row">
+                    <label class="item-input row">
+                        <div class="col-50 col col-center item-text-wrap">{{'DATA.SAVINGS.2' | translate }}</div>
+                        <div class="col col-10 col-center">$</div>
+                        <input class="col-40 col col-center custom-input" type="tel" pattern="[0-9]*" ng-model="customInputs.personalCare" name="personalCare" required currency-mask>
+                        <i class="icon ion-alert assertive" style="font-size:20px;position:relative;top:5px" ng-show="customForm.personalCare.$invalid && customForm.$submitted"></i>
+                    </label>
+                    <a class="button col col-10 button-small col-center button-icon icon ion-ios-help-outline " ng-click="showPopup($event, 'DATA.SAVINGS.INFO_2' ,true)"></a>
+                </div>
+                <div class="item row">
+                    <label class="item-input row">
+                        <div class="col-50 col col-center item-text-wrap">{{'DATA.SAVINGS.3' | translate }}</div>
+                        <div class="col col-10 col-center">$</div>
+                        <input class="col-40 col col-center custom-input" type="tel" pattern="[0-9]*" ng-model="customInputs.lifeAndOtherPersonalInsurance" name="lifeAndOtherPersonalInsurance" required currency-mask>
+                        <i class="icon ion-alert assertive" style="font-size:20px;position:relative;top:5px" ng-show="customForm.lifeAndOtherPersonalInsurance.$invalid && customForm.$submitted"></i>
+                    </label>
+                    <a class="button col col-10 button-small col-center button-icon icon ion-ios-help-outline " ng-click="showPopup($event, 'DATA.SAVINGS.INFO_3' ,true)"></a>
+                </div>
+                <div class="item row">
+                    <label class="item-input row">
+                        <div class="col-50 col col-center item-text-wrap">{{'DATA.SAVINGS.4' | translate }}</div>
+                        <div class="col col-10 col-center">$</div>
+                        <input class="col-40 col col-center custom-input" type="tel" pattern="[0-9]*" ng-model="customInputs.retirementSavings" name="retirementSavings" required currency-mask>
+                        <i class="icon ion-alert assertive" style="font-size:20px;position:relative;top:5px" ng-show="customForm.retirementSavings.$invalid && customForm.$submitted"></i>
+                    </label>
+                    <a class="button col col-10 button-small col-center button-icon icon ion-ios-help-outline " ng-click="showPopup($event, 'DATA.SAVINGS.INFO_4' ,true)"></a>
+                </div>
+                <div class="item  row">
+                    <label class="item-input row">
+                        <div class="col-50 col col-center item-text-wrap">{{'DATA.SAVINGS.5' | translate }}</div>
+                        <div class="col col-10 col-center">$</div>
+                        <input class="col-40 col col-center custom-input" type="tel" pattern="[0-9]*" ng-model="customInputs.cashContributions" name="cashContributions" required currency-mask>
+                        <i class="icon ion-alert assertive" style="font-size:20px;position:relative;top:5px" ng-show="customForm.cashContributions.$invalid && customForm.$submitted"></i>
+                    </label>
+                    <a class="button col col-10 button-small col-center button-icon icon ion-ios-help-outline " ng-click="showPopup($event, 'DATA.SAVINGS.INFO_5' ,true)"></a>
+                </div>
+            <button type="submit" class="button letter-spacing square-button button-block button-energized">
+                {{'FORMS.SUBMIT' | translate }}
+            </button>
+        </form>
+    </ion-content>
+</ion-view>

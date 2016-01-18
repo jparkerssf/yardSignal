@@ -1,0 +1,48 @@
+/* Backend Call Loading Spinner
+
+The spinner is what appears when the app makes a call to the
+backend, and is waiting on a response.
+INSTRUCTION:
+1. Inject 'SSFSpinner' into the app.js
+2. Include '<script src="js/SSFServices/SSFSpinner.js"></script>' into the index.html
+    above where the app.js is referenced.
+
+angular.module('SSFSpinner', [])
+.config(['$httpProvider', function($httpProvider) {
+  $httpProvider.interceptors.push(function($rootScope) {
+    return {
+      request: function(config) {
+        $rootScope.$broadcast('loading:show');
+        return config;
+      },
+      response: function(response) {
+        $rootScope.$broadcast('loading:hide');
+        return response;
+      },
+      requestError: function(reason) {
+        $rootScope.$broadcast('loading:hide');
+        return reason;
+      },
+      responseError: function(response) {
+        $rootScope.$broadcast('loading:hide');
+        if(response.status === 401 && (
+            response.data.error.code === "INVALID_TOKEN" ||
+            response.data.error.code === "AUTHORIZATION_REQUIRED")) {
+          $rootScope.$broadcast('request:auth');
+        }
+        return response;
+      }
+    };
+  });
+}])
+.run(["$rootScope", "$ionicLoading", function($rootScope, $ionicLoading) {
+  $rootScope.$on('loading:show', function() {
+    $ionicLoading.show({
+      template: '<ion-spinner></ion-spinner>'
+    });
+  });
+  $rootScope.$on('loading:hide', function() {
+    $ionicLoading.hide();
+  });
+}]);
+*/

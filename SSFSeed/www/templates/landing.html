@@ -1,0 +1,42 @@
+<ion-view view-title="{{'VIEW_TITLES.LANDING' | translate }}" hide-nav-bar="false">
+    <ion-nav-title>
+        {{'VIEW_TITLES.APP_NAME' | translate}}
+        <!--div style="height:85%">
+            <img src="img/IB Logo.png" class="padding-horizontal" width="100%" style="max-width:210px" id="nav-logo">
+        </div-->
+    </ion-nav-title>
+    <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear ion-ios-world-outline light" ui-sref="app.configure-settings"></button>
+    </ion-nav-buttons>
+    <ion-content class="padding calm-bg">
+        <!--div>
+            <img src="img/wallet.png" style="height:28vh" class="landingImage" align="middle">
+        </div>
+        <div>
+            <img src="img/Instant budget.png" style="height:11vh" class="landingImage" align="middle">
+        </div>
+        <div>
+            <img src="img/Zebit logo.png" style="height:10vh" class="landingImage" align="middle">
+        </div-->
+        <button class="button letter-spacing button-energized zebit-button" id="landing1" ng-click="continue()">
+            {{'LANDING_CTRL.GET_STARTED' | translate}}
+        </button>
+        <button class="button letter-spacing button-royal zebit-button" id="landing2" ng-click="toLogin()">
+            {{'LANDING_CTRL.LOGIN' | translate}}
+        </button>
+        <div class="text-center" id="landingText">
+            <span class="h5" ng-click="buttonClicked()">
+                <font color="#FFFFFF">{{'LANDING_CTRL.PRIVACY_POLICY' | translate}}</font>
+            </span>
+            <span class="h5" ui-sref="app.configure-eula">
+                <font color="#FFFFFF">{{'LANDING_CTRL.TERMS_OF_USE' | translate}}</font>
+            </span>
+            <span class="h5" ui-sref="app.configure-about-zebit">
+                <font color="#FFFFFF">{{'LANDING_CTRL.ABOUT' | translate}}</font>
+            </span>
+        </div>
+        <div class="text-center">
+            <font color="#FFFFFF">©{{'LANDING_CTRL.COPYRIGHT' | translate}}</font>
+        </div>
+    </ion-content>
+</ion-view>

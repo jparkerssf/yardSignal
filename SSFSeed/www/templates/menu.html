@@ -1,0 +1,65 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content drag-content="showMenu">
+    <ion-nav-bar class="bar-calm">
+      <ion-nav-back-button>
+        {{'GENERAL.BACK' | translate}}
+      </ion-nav-back-button>
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon ng-hide" menu-toggle="left" ng-show="showMenu && !isAsideExposed"
+        ng-class="{'online-green':$root.online, 'offline-red':!$root.online}">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left" expose-aside-when="{{minWidth}}">
+    <ion-header-bar class="bar-stable">
+      <h1 class="title">{{"SIDE_MENU.HEADER" | translate}}</h1>
+    </ion-header-bar>
+    <ion-content>
+      <ion-list>
+        <ion-item ng-click="logOut()" ng-show="showMenu">
+          {{'SIDE_MENU.SIGN_OUT' | translate}}
+        </ion-item>
+        <ion-item ng-click="logOut()" ng-hide="showMenu">
+          {{'SIDE_MENU.SIGN_IN' | translate}}
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <div class="item item-divider">{{"SIDE_MENU.DIVIDER_1.HEADER" | translate}}</div>
+        <ion-item ng-click="dividerAA()">
+          {{'SIDE_MENU.DIVIDER_1.1' | translate}}
+          
+        </ion-item>
+        <ion-item ng-click="dividerAB()">
+          {{'SIDE_MENU.DIVIDER_1.2' | translate}}
+        </ion-item>
+        <ion-item ng-click="dividerAC()">
+          {{'SIDE_MENU.DIVIDER_1.3' | translate}}
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <div class="item item-divider">{{"SIDE_MENU.DIVIDER_2.HEADER" | translate}}</div>
+        <ion-item ng-click="settings()">
+          {{'SIDE_MENU.DIVIDER_2.1' | translate}}
+        </ion-item>
+        <ion-item ng-click="aboutSSF()">
+          {{'SIDE_MENU.DIVIDER_2.2' | translate}}
+        </ion-item>
+        <ion-item ng-click="privacyPolicy()">
+          {{'SIDE_MENU.DIVIDER_2.5' | translate}}
+        </ion-item>
+        <ion-item ng-click="userLiscense()">
+          {{'SIDE_MENU.DIVIDER_2.3' | translate}}
+        </ion-item>
+        <ion-item ng-click="feedback()">
+            {{'SIDE_MENU.DIVIDER_2.4' | translate}}
+        </ion-item>
+        <ion-item ui-sref="app.navigation">
+        Navigation
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>
