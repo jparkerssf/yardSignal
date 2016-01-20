@@ -1,22 +1,17 @@
 /*  Youtube Imbedded Video
 Instructions:
 1.  Inject 'SSFFavorites' into the app.js file.
-2.  Place '<script src="js/SSFServices/SSFFavorites.js"></script>' into the index.html file.
+2.  Place '<script src="js/SSFServices/SSFFavorites.js"></script>' into the index.html
+            file above the app.js
 3.  Place the following code into the controller you want to have this feature in:
         $scope.favoriteToggle = SSFFavoritesService.favoriteToggle;
         $scope.isFavorited = SSFFavoritesService.isFavorited;
 4.  Place the following code into the html linked to the controller with the feature:
-        <div ng-click="favoriteToggle(itemId)">
-            <icon class="icon energized" style="font-size: 32px;" ng-class="isFavorited(itemId) ? 'ion-ios-star' : 'ion-ios-star-outline'">
+        <div class="col col-10 col-center" ng-click="favoriteToggle('itemId')">
+            <icon class="icon energized" style="font-size: 32px;" ng-class="isFavorited('itemId') ? 'ion-ios-star' : 'ion-ios-star-outline'">
         </div>
 6.  If you want to clear favorites on logout or manually clear them, use this:
         'SSFFavoritesService.removeFavorites();'
-    
-Examples:
-1.  //will create the functions necessary to star and unstar an item in the controller
-    SSFFavorites.favoritesFeature($scope);
-2.  //is the actual star in the html that shows an item being favorited or not
-    <i class="icon energized" ng-class="isFavorited(video.id.videoId) ? 'ion-ios-star' : 'ion-ios-star-outline'" ng-click="favoriteToggle(video.id.videoId)" ></i>
 */
 
 angular.module('SSFFavorites', [])
@@ -33,16 +28,15 @@ angular.module('SSFFavorites', [])
         localFavorites = {};
     }
     
-    Object.size = function(obj) {
+    function objectSize(obj) {
         var size = 0, key;
         for (key in obj) {
             if (obj.hasOwnProperty(key)) size++;
         }
         return size;
-    };
-    
+    }
     function updateHaveFavorites() {
-        if(localFavorites.size > 0) {
+        if(objectSize(localFavorites) > 0) {
             haveFavorites = true;
         }
         else {
@@ -70,6 +64,9 @@ angular.module('SSFFavorites', [])
         }
         else {
             localFavorites[itemId] = true;
+            if(itemId === 'itemId') {
+                alert('ERROR: Remember to change the itemId passed from the icon being clicked to an actual ID. Also remember to change the id being passed to determine what type of icon is being used.');
+            }
         }
         updateHaveFavorites();
         $window.localStorage['localFavorites'] = JSON.stringify(localFavorites);
@@ -77,15 +74,17 @@ angular.module('SSFFavorites', [])
     
     service.commaConcatenatedFavorites = function($scope) {
         var favoritesString = '';
+        updateHaveFavorites();
         if(haveFavorites) {
             //have favorites
-            for(var i in $scope.SSFFavorites.localFavorites) {
+            for(var i in localFavorites) {
                 favoritesString += i + ',';
             }
             return favoritesString;
         }
         else {
-            return 'Check for favorites to exist before you call this function using: SSFFavoritesService.haveFavorites();';
+            alert('Check for favorites to exist before you call this function using: SSFFavoritesService.haveFavorites();');
+            return '';
         }
     };
     

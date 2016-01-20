@@ -10,7 +10,7 @@ function shouldRotateToOrientation(degrees) {
 angular.module('starter', ['ionic','ionic.service.core', 'ionic.service.analytics',
     'starter.controllers', 'pascalprecht.translate', 'ngIOS9UIWebViewPatch',
     'RESTConnection1', 'currencyMask', 'ngCordova', 'SSFAlerts', 'SSFDirectives',
-    'SSFMailComposer', 'SSFCacheService', 'SSFErrorMessages'])
+    'SSFMailComposer', 'SSFCacheService', 'SSFErrorMessages', 'SSFConfig'])
 .constant("LANGUAGE_CODES", {
         "ENGLISH": "en",
         "SPANISH": "es",

@@ -1,4 +1,10 @@
-//not yet included in index.html nor app.js
+/* Spinner while waiting for a call to return from a backend
+Instructions:
+1.  Inject 'SSFSpinner' into the app.js file.
+2.  Place '<script src="js/SSFServices/SSFSpinner.js"></script>' into the index.html
+            file above the app.js.
+*/
+
 
 angular.module('SSFSpinner', [])
 .config(['$httpProvider', function($httpProvider) {

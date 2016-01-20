@@ -1,13 +1,14 @@
-/*	
-	remember to place '<script src="js/SSFServices/SSFCache.js"></script>'
-		inside of the index.html above the app.js line
-	remember to inject: 'SSFCacheService' into the app.js
-	remember to call 'SSFCacheService.clearData();' on logout
-	lastly, remember to inject all the service names from RESTServices.js
-		'.service('ServiceName', [...])' into SSFCacheService
+/*  Youtube Imbedded Video
+Instructions:
+1.  Inject 'SSFCache' into the app.js file.
+2.  Place '<script src="js/SSFServices/SSFCache.js"></script>' into the index.html
+            file above the app.js
+3.	If you have not already done so, include the SSFLogout.js service file.
+4.	Place this: 'SSFCacheService.clearData();' into the only service in the
+			SSFLogout.js file.
 */
 
-/* EXAMPLE USES
+/* EXAMPLE USES referencing the Zebit App
 
 creates high level instant budget
 CacheService.manageData(InstantService, computeHighLevelInstant, mostRecentHighLevel, formInputs, false);
@@ -19,10 +20,43 @@ gets latest savings budget
 CacheService.manageData(SavingsService, getLatestSavingsBudget, mostRecentSavings, {}, true);
 */
 
-angular.module('SSFCacheService', [])
-.service('SSFCache', ['$window', '$q', '$rootScope',
-		function ($window, $q, $rootScope) {
- 
+angular.module('SSFCache', [])
+
+
+
+
+.config(['SSFConfigConstants', function(SSFConfigConstants) {
+    SSFConfigConstants['SSFAlertsService'] = {
+        'textTranslated': {
+            //offline
+            //not logged in
+        },
+        'notTranslated': {
+            
+        }
+    };
+}])
+
+.service('SSFCacheService', ['$window', '$q', '$rootScope', 'SSFConfigConstants',
+		function ($window, $q, $rootScope, SSFConfigConstants) {
+	
+	//	toggles between which translated or not translated text is references.
+    var serviceText = undefined;
+    if(SSFConfigConstants.shouldTranslate) {
+        serviceText = SSFConfigConstants.SSFAlertsService.textTranslated;
+    }
+    else {
+        serviceText = SSFConfigConstants.SSFAlertsService.notTranslated;
+    }
+    service.updateServiceText = function() {
+        if(SSFConfigConstants.shouldTranslate) {
+            serviceText = SSFConfigConstants.SSFAlertsService.textTranslated;
+        }
+        else {
+            serviceText = SSFConfigConstants.SSFAlertsService.notTranslated;
+        }
+    };
+    
 	var service = this,
 	cacheData = {},
 	currentData = {};
@@ -56,6 +90,13 @@ angular.module('SSFCacheService', [])
 			};
 		}
 	}
+    function objectSize(obj) {
+        var size = 0, key;
+        for (key in obj) {
+            if (obj.hasOwnProperty(key)) size++;
+        }
+        return size;
+    }
 	
 	service.clearData = function() {
 		cacheData = {};
@@ -91,7 +132,7 @@ angular.module('SSFCacheService', [])
 		}
 		else {
 		    //TODO: test if this if statement actually works
-			if(JSON.stringify(currentData.data) === '{}' || currentData.data === undefined) {
+			if(objectSize(JSON.stringify(currentData.data)) === 0 || currentData.data === undefined) {
 				if($rootScope.online) {
 					deferred.resolve(
 						injectedName.serviceName(token, userId, dataObject)
