@@ -14,7 +14,8 @@ angular.module('SSFLogout', [])
     
     var service = this;
     service.logout = function() {
-        //include all logout code here
+        // include all logout code here
         // SSFCacheService.clearData();
+        // SSFFavoritesService.removeFavorites();
     };
 }]);

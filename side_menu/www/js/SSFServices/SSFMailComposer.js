@@ -3,9 +3,7 @@ Instructions:
 1.  Inject 'SSFMailComposer' into the app.js file.
 2.  Place '<script src="js/SSFServices/SSFMailComposer.js"></script>' into the index.html
             file above the app.js.
-3.  Step 4 includes code that will be used only if the controller calling the function
-            does not declare either the toEmail or subject and if 'forceAllegience' is set to false.
-4.  Place the following config code into the SSFConfig.js file you are using:
+3.  Place the following config code into the SSFConfig.js file you are using:
 .config(['SSFConfigConstants', function(SSFConfigConstants) {
     //forceAllegience will make every SSFMailService.sendMail(); call use these config inputs
     SSFConfigConstants['SSFMailService'] = {

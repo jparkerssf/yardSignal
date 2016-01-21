@@ -13,9 +13,6 @@ Instructions:
 9.  Include: '<script src="lib/ngCordova/dist/ng-cordova.min.js"></script>'
             in your index.html file just below:
             '<script src="lib/ionic/js/ionic.bundle.js"></script>'
-10. Include: '<script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>'
-            in your index.html file just below:
-            '<script src="lib/ionic/js/ionic.bundle.js"></script>'
             
 If you are using a feature that changes color based on being online or offline, than
         be sure to include the following call in the controller that you want the
@@ -56,13 +53,13 @@ angular.module('SSFConnectivity', [])
             window.addEventListener("online", function(e) {
                 $scope.online = true;
                 // $scope.$apply();
-                alert("online browser");
+                // alert("online browser");
             }, false);
             
             window.addEventListener("offline", function(e) {
                 $scope.online = false;
                 // $scope.$apply();
-                alert("offline browser");
+                // alert("offline browser");
             }, false);
         }
     };

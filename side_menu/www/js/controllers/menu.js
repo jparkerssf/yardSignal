@@ -6,14 +6,14 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
 .controller('SideMenuCtrl', ['$ionicPlatform', "$scope", "$state", "$ionicSideMenuDelegate",
     "$rootScope", "$ionicHistory", "$window", "$translate", "SSFAlertsService",
-    'SSFMailService', '$cordovaNetwork', "CONTENT_WIDTH", '$ionicAnalytics', 'SSFCache',
+    'SSFMailService', '$cordovaNetwork', "SSFConfigConstants", '$ionicAnalytics', 'SSFCacheService',
     function($ionicPlatform, $scope, $state, $ionicSideMenuDelegate, $rootScope, $ionicHistory,
-    $window, $translate, SSFAlertsService, SSFMailService, $cordovaNetwork, CONTENT_WIDTH,
-    $ionicAnalytics, SSFCache) {
+    $window, $translate, SSFAlertsService, SSFMailService, $cordovaNetwork, SSFConfigConstants,
+    $ionicAnalytics, SSFCacheService) {
   
   
   
-  $scope.minWidth = "(min-width:" + CONTENT_WIDTH +"px)";
+  $scope.minWidth = "(min-width:" + SSFConfigConstants.SSFDirectives.contentWidth +"px)";
  
   //cordova network plugin code
   $rootScope.online = false;

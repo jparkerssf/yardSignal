@@ -2,9 +2,10 @@
 Instructions:
 1.  Comment out the .service('SSFAlertsService', [...]) for the one you don't need.
             The top .service uses translate, the bottom does not.
-2.  Inject 'SSFConnectivity' into the app.js file.
-3.  Place '<script src="js/SSFServices/SSFConnectivity.js"></script>' into the index.html
+2.  Inject 'SSFAlerts' into the app.js file.
+3.  Place '<script src="js/SSFServices/SSFAlerts.js"></script>' into the index.html
             file above the app.js
+4.  If you do not have the SSFConfig.js file, include it then you are finished including SSFAlerts.
 */
     
     
@@ -12,14 +13,15 @@ angular.module('SSFAlerts', [])
 
 .config(['SSFConfigConstants', function(SSFConfigConstants) {
     SSFConfigConstants['SSFAlertsService'] = {
-        'textTranslated': {
-            'okay': 'SSF_CONFIG_CONSTANTS.SSF_ALERTS_SERVICE.OKAY',
-            'cancel': 'SSF_CONFIG_CONSTANTS.SSF_ALERTS_SERVICE.CANCEL'
-        },
-        'notTranslated': {
-            'okay': 'OK',
-            'cancel': 'Cancel'
-        }
+    	//SSFTranslate should create a 'textTranslated' object whenever it translates
+        'languageFileReference': [
+            'SSF_CONFIG_CONSTANTS.SSF_ALERTS_SERVICE.OKAY',
+            'SSF_CONFIG_CONSTANTS.SSF_ALERTS_SERVICE.CANCEL'
+        ],
+        'notTranslated': [
+            'OK',
+            'Cancel'
+        ]
     };
 }])
 
@@ -49,7 +51,7 @@ angular.module('SSFAlerts', [])
             var alertPopup = $ionicPopup.alert({
                 title: title,
                 template: body,
-                okText: (okText == undefined || okText == null) ? serviceText.okay : okText
+                okText: (okText == undefined || okText == null) ? serviceText[0] : okText
             });
             return alertPopup;
         }
@@ -67,8 +69,8 @@ angular.module('SSFAlerts', [])
             var confirmPopup = $ionicPopup.confirm({
                 title: title,
                 template: body,
-                okText: (okText == undefined || okText == null) ? serviceText.okay : okText, 
-                cancelText: (cancelText == undefined || cancelText == null) ? serviceText.cancel : cancelText
+                okText: (okText == undefined || okText == null) ? serviceText[0] : okText, 
+                cancelText: (cancelText == undefined || cancelText == null) ? serviceText[1] : cancelText
             });
             return confirmPopup;
         }
@@ -82,7 +84,7 @@ angular.module('SSFAlerts', [])
                     defer.resolve(false);
                 }
             };
-            var buttons = [serviceText.okay, serviceText.cancel];
+            var buttons = serviceText;
             if(okText != undefined)
                 buttons[0] = okText;
             if(cancelText != undefined)

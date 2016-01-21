@@ -8,9 +8,9 @@ function shouldRotateToOrientation(degrees) {
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic','ionic.service.core', 'ionic.service.analytics',
-    'starter.controllers', 'pascalprecht.translate', 'ngIOS9UIWebViewPatch',
+    'starter.controllers', 'SSFConfig', 'pascalprecht.translate', 'ngIOS9UIWebViewPatch',
     'RESTConnection1', 'currencyMask', 'ngCordova', 'SSFAlerts', 'SSFDirectives',
-    'SSFMailComposer', 'SSFCacheService', 'SSFErrorMessages', 'SSFConfig'])
+    'SSFMailComposer', 'SSFCache'])
 .constant("LANGUAGE_CODES", {
         "ENGLISH": "en",
         "SPANISH": "es",

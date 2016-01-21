@@ -1,4 +1,4 @@
-/*  Youtube Imbedded Video
+/*  Remembers results and stores in local storage for offline access
 Instructions:
 1.  Inject 'SSFCache' into the app.js file.
 2.  Place '<script src="js/SSFServices/SSFCache.js"></script>' into the index.html
@@ -26,40 +26,44 @@ angular.module('SSFCache', [])
 
 
 .config(['SSFConfigConstants', function(SSFConfigConstants) {
-    SSFConfigConstants['SSFAlertsService'] = {
-        'textTranslated': {
-            //offline
-            //not logged in
-        },
-        'notTranslated': {
-            
-        }
+    SSFConfigConstants['SSFCacheService'] = {
+    	//SSFTranslate should create a 'textTranslated' object whenever it translates
+    	'languageFileReference': [
+            'SSF_CONFIG_CONSTANTS.SSF_CACHE_SERVICE.TITLE',
+            'SSF_CONFIG_CONSTANTS.SSF_CACHE_SERVICE.OFFLINE',
+            'SSF_CONFIG_CONSTANTS.SSF_CACHE_SERVICE.UNREGISTERED'
+    	],
+        'notTranslated': [
+            'Error',
+            'We could not retrieve your data while you are offline.',
+            'There was a problem with authenticating your session. Please sign in.'
+        ]
     };
 }])
 
-.service('SSFCacheService', ['$window', '$q', '$rootScope', 'SSFConfigConstants',
-		function ($window, $q, $rootScope, SSFConfigConstants) {
+.service('SSFCacheService', ['$window', '$q', '$rootScope', 'SSFConfigConstants', 'SSFAlertsService',
+		function ($window, $q, $rootScope, SSFConfigConstants, SSFAlertsService) {
 	
-	//	toggles between which translated or not translated text is references.
-    var serviceText = undefined;
-    if(SSFConfigConstants.shouldTranslate) {
-        serviceText = SSFConfigConstants.SSFAlertsService.textTranslated;
-    }
-    else {
-        serviceText = SSFConfigConstants.SSFAlertsService.notTranslated;
-    }
-    service.updateServiceText = function() {
-        if(SSFConfigConstants.shouldTranslate) {
-            serviceText = SSFConfigConstants.SSFAlertsService.textTranslated;
-        }
-        else {
-            serviceText = SSFConfigConstants.SSFAlertsService.notTranslated;
-        }
-    };
-    
 	var service = this,
 	cacheData = {},
 	currentData = {};
+	
+	//	toggles between which translated or not translated text is referenced.
+    var serviceText = undefined;
+    if(SSFConfigConstants.shouldTranslate) {
+        serviceText = SSFConfigConstants.SSFCacheService.textTranslated;
+    }
+    else {
+        serviceText = SSFConfigConstants.SSFCacheService.notTranslated;
+    }
+    service.updateServiceText = function() {
+        if(SSFConfigConstants.shouldTranslate) {
+            serviceText = SSFConfigConstants.SSFCacheService.textTranslated;
+        }
+        else {
+            serviceText = SSFConfigConstants.SSFCacheService.notTranslated;
+        }
+    };
 
 	function updateArray(storageName) {
 		cacheData[storageName] = currentData;
@@ -77,16 +81,18 @@ angular.module('SSFCache', [])
 				currentData = tempHolder.storageName;
 			}
 			else {
+				SSFAlertsService.showAlert(serviceText[0], serviceText[1]);
 				currentData = {
 					'data': {},
-					'errorMessage': 'ERROR.OFFLINE'
+					'errorMessage': serviceText[1]
 				};
 			}
 		}
 		else {
+			SSFAlertsService.showAlert(serviceText[0], serviceText[1]);
 			currentData = {
 				'data': {},
-				'errorMessage': 'ERROR.OFFLINE'
+				'errorMessage': serviceText[1]
 			};
 		}
 	}
@@ -123,10 +129,11 @@ angular.module('SSFCache', [])
 		}
 		
 		if(shouldBeSignedIn && $window.localStorage['userId'] === undefined) {
+			SSFAlertsService.showAlert(serviceText[0], serviceText[2]);
 			deferred.resolve(
 				currentData = {
 					'data': {},
-					'errorMessage': 'ERROR.NOT_LOGGED_IN'
+					'errorMessage': serviceText[2]
 				}
 			);
 		}
@@ -149,10 +156,11 @@ angular.module('SSFCache', [])
 				}
 				else {
 					//offline and don't have the data
+					SSFAlertsService.showAlert(serviceText[0], serviceText[1]);
 					deferred.resolve(
 						currentData = {
 							'data': {},
-							'errorMessage': 'ERROR.OFFLINE'
+							'errorMessage': serviceText[1]
 						}
 					);
 				}
