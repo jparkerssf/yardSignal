@@ -1,0 +1,40 @@
+<ion-view view-title="{{'APP.NAME' | translate}}">
+  <!-- Include ion-nav-buttons in every index to avoid breaking the app (ionic material bug) -->
+  <ion-nav-buttons></ion-nav-buttons> 
+  <ion-content>
+    <div class="padding text-center subheader">
+      {{'FORMS.LOGIN_TITLE' | translate}}
+    </div>
+    <form class="padding" name="loginForm" novalidate ng-submit="doLogin(loginForm)">
+      <div class="list">
+        
+        <ion-input class="item item-input">
+          <ion-label class="item-text-wrap">
+            {{'FORMS.INPUTS.EMAIL' | translate}}
+          </ion-label>
+          <input type="email" name="email" ng-model="loginData.email" required>
+        </ion-input>
+        
+        <ion-input class="item item-input">
+          <ion-label class="item-text-wrap">
+            {{'FORMS.INPUTS.PASSWORD' | translate}}
+          </ion-label>
+          <input type="password" name="rePassword" ng-model="loginData.password" required>
+        </ion-input>
+        
+        <ion-checkbox ng-model="checkbox.rememberMe" class="no-border checkbox-calm">
+          {{'FORMS.INPUTS.REMEMBER_ME' | translate}}
+        </ion-checkbox>
+        
+      </div>
+      <button class="button spacecaps button-block button-calm" type="submit" ion-track-tap="Login-tap" ion-track-data="{ mockData: 'User tapped Login'}">
+        {{'FORMS.BUTTONS.SUBMIT' | translate}}
+      </button>
+    </form>
+    <div class="padding-horizontal">
+      <button class="button spacecaps button-block button-calm" ng-click="register()">
+        {{'FORMS.BUTTONS.REGISTER' | translate}}
+      </button>
+    </div>
+  </ion-content>
+</ion-view>

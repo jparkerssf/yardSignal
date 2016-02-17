@@ -1,4 +1,4 @@
-/*
+/* Can break the app if ionic updates this directive
 Instructions:
 1.  Inject 'SSFDirectives' into the app.js file.
 2.  Place '<script src="js/SSFServices/SSFDirectives.js"></script>' into the index.html

@@ -1,4 +1,4 @@
-/* Spinner while waiting for a call to return from a backend
+/* A single place to configure all of the SSFServices
 Instructions:
 1.  Inject 'SSFConfig' into the app.js file before any of the other SSFServices.
 2.  Place '<script src="js/SSFServices/SSFConfig.js"></script>' into the index.html

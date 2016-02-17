@@ -1,0 +1,50 @@
+<ion-view view-title="{{'APP.NAME' | translate }}" hide-nav-bar="false">
+  <!-- Include ion-nav-buttons in every index to avoid breaking the app (ionic material bug) -->
+  <ion-nav-buttons></ion-nav-buttons>
+  <ion-content>
+    <div class="padding text-center subheader">
+        {{'FORMS.REGISTER_TITLE' | translate}}
+    </div>
+    
+    <form name="registerForm" class="padding" ng-submit="submitRegisterForm(registerForm)" novalidate>
+      <div class="list">
+        
+        <ion-input class="item item-input">
+          <ion-label class="item-text-wrap">
+            {{'FORMS.INPUTS.EMAIL' | translate }}
+          </ion-label>
+          <input type="email" name="email" ng-model="registerData.email" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" required>
+        </ion-input>
+        
+        <ion-input class="item item-input">
+          <ion-label class="item-text-wrap">
+            {{'FORMS.INPUTS.PASSWORD' | translate }}
+          </ion-label>
+          <input type="password" name="password" ng-model="registerData.password" pattern="(?=^.{8,}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
+          <a class=" button button-small button-icon icon ion-ios-help-outline ng-class:{'assertive' : registerForm.password.$invalid && registerForm.$submitted}" ng-click="showPopup($event, 'FORMS.POPOVERS.1' ,true)" style="top: 3px"></a>
+        </ion-input>
+        
+        <ion-input class="item item-input">
+          <ion-label class="item-text-wrap">
+            {{'FORMS.INPUTS.REPEAT_PASSWORD' | translate}}
+          </ion-label>
+          <input type="password" name="rePassword" ng-model="repeatPassword.password" ng-class="{ 'has-errors' : registerForm.password.$invalid && registerForm.$submitted}" required>
+        </ion-input>
+        
+        <ion-checkbox ng-model="registerData.hasAcceptedEULA" class="no-border checkbox-calm">
+          {{'FORMS.INPUTS.EULA' | translate}}
+        </ion-checkbox>
+        <ion-checkbox ng-model="checkbox.rememberMe" class="no-border checkbox-calm">
+          {{'FORMS.INPUTS.REMEMBER_ME' | translate}}
+        </ion-checkbox>
+      </div>
+      
+      <button class="button button-block button-calm spacecaps" type="button" style="margin:0" ng-click="navEula()">
+        {{'FORMS.BUTTONS.EULA' | translate}}
+      </button>
+      <button class="button spacecaps button-block button-calm" type="submit" ion-track-tap="Register-tap" ion-track-data="{ mockData: 'User tapped Register'}">
+        {{'FORMS.BUTTONS.SUBMIT' | translate}}
+      </button>
+    </form>
+  </ion-content>
+</ion-view>

@@ -3,6 +3,8 @@ Instructions:
 1.  Inject 'SSFSpinner' into the app.js file.
 2.  Place '<script src="js/SSFServices/SSFSpinner.js"></script>' into the index.html
             file above the app.js.
+Feature:  If you set $rootScope.stopSpinner to true, you can turn it off.
+    It will revert back to false after the first call ends.
 */
 
 
@@ -35,12 +37,20 @@ angular.module('SSFSpinner', [])
   });
 }])
 .run(["$rootScope", "$ionicLoading", function($rootScope, $ionicLoading) {
+  $rootScope.stopSpinner = false;
   $rootScope.$on('loading:show', function() {
-    $ionicLoading.show({
-      template: '<ion-spinner></ion-spinner>'
-    });
+    var options = { 
+      template: '<ion-spinner icon="bubbles" class="spinner-light"></ion-spinner>'
+    };
+    if(!ionic.Platform.isWebView()) {
+      options["noBackdrop"] = true;
+    }
+    if(!$rootScope.stopSpinner) {
+      $ionicLoading.show(options);
+    }
   });
   $rootScope.$on('loading:hide', function() {
+    $rootScope.stopSpinner = false;
     $ionicLoading.hide();
   });
 }]);

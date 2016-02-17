@@ -1,0 +1,14 @@
+{
+    "SSF_CONFIG_CONSTANTS": {
+        "SSF_ALERTS_SERVICE": {
+            "OKAY": "Not Okay",
+            "CANCEL": "huh"
+        },
+        "SSF_CACHE_SERVICE": {
+            "TITLE": "ehh",
+            "OFFLINE": " while you are offline.We could not retrieve your data",
+            "UNREGISTERED": "your session. Please sign in.There was a problem with authenticating "
+        }
+    }
+    
+}
