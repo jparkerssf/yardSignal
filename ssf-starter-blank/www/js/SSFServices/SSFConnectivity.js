@@ -3,6 +3,8 @@ Instructions:
 1.  Inject 'SSFConnectivity' into the app.js file.
 2.  Place '<script src="js/SSFServices/SSFConnectivity.js"></script>' into the index.html
             file above the app.js
+Note.   ngCordova does not like ionic-material created by 'zachsoft'. If you want to use
+            his ionic-material, you are done with setting this service up.
 Note.   If you want online/offline listeners for mobile device, continue onto step 3
             and uncomment out 'service.setupConnectivityListeners'. Otherwise,
             you are finished.
@@ -44,41 +46,41 @@ angular.module('SSFConnectivity', [])
         }
     };
     
-    service.setupConnectivityListeners = function($scope) {
-        $scope.online = true;
-        if(ionic.Platform.isWebView()) {
-            // could use navigator.connection instead of $cordovaNetwork.getNetwork()
-            if($cordovaNetwork.getNetwork() === "none") {
-                $scope.online = false;
-            }
-            else {
-                $scope.online = true;
-            }
-            $scope.$apply();
-            $scope.$on('$cordovaNetwork:online', function(event, networkState) {
-                $scope.online = true;
-                // $scope.$apply();
-                // alert("online cordova");
-            });
-            $scope.$on('$cordovaNetwork:offline', function(event, networkState) {
-                $scope.online = false;
-                // $scope.$apply();
-                // alert("offline cordova");
-            });
-        }
-        else {
-            $scope.online = navigator.onLine;
-            window.addEventListener("online", function(e) {
-                $scope.online = true;
-                // $scope.$apply();
-                // alert("online browser");
-            }, false);
+    // service.setupConnectivityListeners = function($scope) {
+    //     $scope.online = true;
+    //     if(ionic.Platform.isWebView()) {
+    //         // could use navigator.connection instead of $cordovaNetwork.getNetwork()
+    //         if($cordovaNetwork.getNetwork() === "none") {
+    //             $scope.online = false;
+    //         }
+    //         else {
+    //             $scope.online = true;
+    //         }
+    //         $scope.$apply();
+    //         $scope.$on('$cordovaNetwork:online', function(event, networkState) {
+    //             $scope.online = true;
+    //             // $scope.$apply();
+    //             // alert("online cordova");
+    //         });
+    //         $scope.$on('$cordovaNetwork:offline', function(event, networkState) {
+    //             $scope.online = false;
+    //             // $scope.$apply();
+    //             // alert("offline cordova");
+    //         });
+    //     }
+    //     else {
+    //         $scope.online = navigator.onLine;
+    //         window.addEventListener("online", function(e) {
+    //             $scope.online = true;
+    //             // $scope.$apply();
+    //             // alert("online browser");
+    //         }, false);
             
-            window.addEventListener("offline", function(e) {
-                $scope.online = false;
-                // $scope.$apply();
-                // alert("offline browser");
-            }, false);
-        }
-    };
+    //         window.addEventListener("offline", function(e) {
+    //             $scope.online = false;
+    //             // $scope.$apply();
+    //             // alert("offline browser");
+    //         }, false);
+    //     }
+    // };
 }]);
