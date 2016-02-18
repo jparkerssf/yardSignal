@@ -5,8 +5,8 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers',
     'ionic-material', 'pascalprecht.translate', 'SSFConfig', 'SSFAlerts', 'SSFCache',
-    'SSFConnectivity', 'SSFDirectives', 'SSFFavorites', 'SSFLogout', 'SSFMailComposer',
-    'SSFSpinner', 'SSFTranslate', 'RESTServices'])
+    'SSFConnectivity', 'SSFDeploy', 'SSFDirectives', 'SSFFavorites', 'SSFLogout',
+    'SSFMailComposer', 'SSFSpinner', 'SSFTranslate', 'RESTServices'])
 
 .run(["$ionicPlatform", '$window', '$ionicHistory', '$state', '$rootScope',
     function($ionicPlatform, $window, $ionicHistory, $state, $rootScope) {
@@ -28,16 +28,6 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers',
     //     ZibID: $window.localStorage["userId"]
     //   });
     // }
-    if($window.localStorage["userId"] !== undefined) {
-        $ionicHistory.nextViewOptions({
-            historyRoot: true,
-            disableBack: true
-        });
-        $state.go("lobby");
-    }
-    else {
-      $rootScope.$broadcast('request:auth');
-    }
   });
 }])
 .config(['$stateProvider', '$urlRouterProvider',

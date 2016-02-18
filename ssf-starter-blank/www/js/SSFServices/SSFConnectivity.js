@@ -57,27 +57,20 @@ angular.module('SSFConnectivity', [])
             $scope.$apply();
             $scope.$on('$cordovaNetwork:online', function(event, networkState) {
                 $scope.online = true;
-                // $scope.$apply();
-                // alert("online cordova");
             });
             $scope.$on('$cordovaNetwork:offline', function(event, networkState) {
                 $scope.online = false;
-                // $scope.$apply();
-                // alert("offline cordova");
             });
         }
         else {
+            //computer webview
             $scope.online = navigator.onLine;
             window.addEventListener("online", function(e) {
                 $scope.online = true;
-                // $scope.$apply();
-                // alert("online browser");
             }, false);
             
             window.addEventListener("offline", function(e) {
                 $scope.online = false;
-                // $scope.$apply();
-                // alert("offline browser");
             }, false);
         }
     };

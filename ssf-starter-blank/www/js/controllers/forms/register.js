@@ -15,6 +15,7 @@ angular.module('starter.controllers')
     
     $scope.$on('$ionicView.enter', function() {
         // Code you want executed every time view is opened
+        $rootScope.stopSpinner = true;
         UsersService.getIP()
         .then(function(response) {
             $scope.registerData.regIP = response.data;

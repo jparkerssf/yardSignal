@@ -21,6 +21,9 @@
             "TITLE": "Error",
             "OFFLINE": "We could not retrieve your data while you are offline.",
             "UNREGISTERED": "There was a problem with authenticating your session. Please sign in."
+        },
+        "SSF_DEPLOY" : {
+            "UPDATING": "Wait while we update your application"
         }
     },
     "LANDING_CTRL": {

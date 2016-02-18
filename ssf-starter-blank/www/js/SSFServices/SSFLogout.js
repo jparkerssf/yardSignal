@@ -16,6 +16,10 @@ angular.module('SSFLogout', [])
 .run(["$rootScope", "$ionicHistory", "$state", "$window", 'SSFCacheService', 'SSFFavoritesService',
     function($rootScope, $ionicHistory, $state, $window, SSFCacheService, SSFFavoritesService) {
   if($window.localStorage.token !== undefined) {
+    $ionicHistory.nextViewOptions({
+      historyRoot: true,
+      disableBack: true
+    });
     $state.go('lobby');
   }
   else {
@@ -31,9 +35,6 @@ angular.module('SSFLogout', [])
     delete $window.localStorage['progress'];
     SSFCacheService.clearData();
     SSFFavoritesService.removeFavorites();
-    // include all logout code here
-    // SSFCacheService.clearData();
-    // SSFFavoritesService.removeFavorites();
     $state.go('landing');
   });  
 }]);

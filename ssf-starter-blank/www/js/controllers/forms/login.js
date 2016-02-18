@@ -13,12 +13,11 @@ angular.module('starter.controllers')
   
   $scope.$on('$ionicView.enter', function() {
     // Code you want executed every time view is opened
+    $rootScope.stopSpinner = true;
     UsersService.getIP()
     .then(function(response) {
       $scope.loginData.logIP = response.data;
     });
-    var dateToSend = new Date();
-    $scope.loginData.lastLog = dateToSend.toUTCString();
   });
   
   $scope.checkbox = {};
@@ -39,6 +38,8 @@ angular.module('starter.controllers')
   $scope.doLogin = function(form) {
     if(!form.$valid)
       return SSFTranslateService.showAlert("ERROR.TITLE", "ERROR.INCOMPLETE_FORM");
+    var dateToSend = new Date();
+    $scope.loginData.lastLog = dateToSend.toUTCString();
     UsersService.login($scope.loginData)
     .then(function(response) {
       //If the data is null, it means there is no internet connection.
