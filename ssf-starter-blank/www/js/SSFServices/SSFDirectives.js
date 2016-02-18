@@ -63,193 +63,194 @@ angular.module('SSFDirectives', [])
     };
 }])
 
-.directive('ionSideMenuContent', [
-  '$timeout',
-  '$ionicGesture',
-  '$window',
-  'SSFConfigConstants',
-function($timeout, $ionicGesture, $window, SSFConfigConstants) {
-    return {
-    require: '^ionSideMenus',
-    compile: function(element, $attributes) {
-        if(ionic.Platform.isWebView())
-          return { pre: prelink };
-        else 
-          return { pre: customPrelink };
+// .directive('ionSideMenuContent', [
+//   '$timeout',
+//   '$ionicGesture',
+//   '$window',
+//   'SSFConfigConstants',
+// function($timeout, $ionicGesture, $window, SSFConfigConstants) {
+//     return {
+//     require: '^ionSideMenus',
+//     compile: function(element, $attributes) {
+//         if(ionic.Platform.isWebView())
+//           return { pre: prelink };
+//         else 
+//           return { pre: customPrelink };
 
-        function customPrelink($scope, $element, $attr, sideMenuCtrl) {
-            var content = {
-              element: element[0],
-              onDrag: function() {},
-              endDrag: function() {},
-              setCanScroll: function(canScroll) {
-              var c = $element[0].querySelector('.scroll');
+//         function customPrelink($scope, $element, $attr, sideMenuCtrl) {
+//             var content = {
+//               element: element[0],
+//               onDrag: function() {},
+//               endDrag: function() {},
+//               setCanScroll: function(canScroll) {
+//               var c = $element[0].querySelector('.scroll');
     
-                if (!c) {
-                  return;
-                }
+//                 if (!c) {
+//                   return;
+//                 }
     
-                var content = angular.element(c.parentElement);
-                if (!content) {
-                  return;
-                }
+//                 var content = angular.element(c.parentElement);
+//                 if (!content) {
+//                   return;
+//                 }
     
-                // freeze our scroll container if we have one
-                var scrollScope = content.scope();
-                scrollScope.scrollCtrl && scrollScope.scrollCtrl.freezeScrollShut(!canScroll);
-              },
-              getTranslateX: function() {
-                return $scope.sideMenuContentTranslateX || 0;
-              },
-              setTranslateX: ionic.animationFrameThrottle(function(amount) {
-                var xTransform = content.offsetX + amount;
-                $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(' + xTransform + 'px,0,0)';
-                $timeout(function() {
-                  $scope.sideMenuContentTranslateX = amount;
-                });
-              }),
-              setMarginLeft: ionic.animationFrameThrottle(function(amount) {
-                if (amount) {
+//                 // freeze our scroll container if we have one
+//                 var scrollScope = content.scope();
+//                 scrollScope.scrollCtrl && scrollScope.scrollCtrl.freezeScrollShut(!canScroll);
+//               },
+//               getTranslateX: function() {
+//                 return $scope.sideMenuContentTranslateX || 0;
+//               },
+//               setTranslateX: ionic.animationFrameThrottle(function(amount) {
+//                 var xTransform = content.offsetX + amount;
+//                 $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(' + xTransform + 'px,0,0)';
+//                 $timeout(function() {
+//                   $scope.sideMenuContentTranslateX = amount;
+//                 });
+//               }),
+//               setMarginLeft: ionic.animationFrameThrottle(function(amount) {
+//                 if (amount) {
                    
-                  amount = parseInt(amount, 10);
-                  $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(' + amount + 'px,0,0)';
-                  $element[0].style.width = (SSFConfigConstants.SSFDirectives.contentWidth - amount) + 'px';
-                  content.offsetX = amount;
-                } else {
-                  $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(0,0,0)';
-                  $element[0].style.width = '';
-                  content.offsetX = 0;
-                }
-              }),
-              setMarginRight: ionic.animationFrameThrottle(function(amount) {
-                if (amount) {
-                  amount = parseInt(amount, 10);
-                  $element[0].style.width = (SSFConfigConstants.SSFDirectives.contentWidth - amount) + 'px';
-                  content.offsetX = amount;
-                } else {
-                  $element[0].style.width = '';
-                  content.offsetX = 0;
-                }
-                // reset incase left gets grabby
-                $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(0,0,0)';
-              }),
-              setMarginLeftAndRight: ionic.animationFrameThrottle(function(amountLeft, amountRight) {
-                amountLeft = amountLeft && parseInt(amountLeft, 10) || 0;
-                amountRight = amountRight && parseInt(amountRight, 10) || 0;
+//                   amount = parseInt(amount, 10);
+//                   $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(' + amount + 'px,0,0)';
+//                   $element[0].style.width = (SSFConfigConstants.SSFDirectives.contentWidth - amount) + 'px';
+//                   content.offsetX = amount;
+//                 } else {
+//                   $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(0,0,0)';
+//                   $element[0].style.width = '';
+//                   content.offsetX = 0;
+//                 }
+//               }),
+//               setMarginRight: ionic.animationFrameThrottle(function(amount) {
+//                 if (amount) {
+//                   amount = parseInt(amount, 10);
+//                   $element[0].style.width = (SSFConfigConstants.SSFDirectives.contentWidth - amount) + 'px';
+//                   content.offsetX = amount;
+//                 } else {
+//                   $element[0].style.width = '';
+//                   content.offsetX = 0;
+//                 }
+//                 // reset incase left gets grabby
+//                 $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(0,0,0)';
+//               }),
+//               setMarginLeftAndRight: ionic.animationFrameThrottle(function(amountLeft, amountRight) {
+//                 amountLeft = amountLeft && parseInt(amountLeft, 10) || 0;
+//                 amountRight = amountRight && parseInt(amountRight, 10) || 0;
     
-                var amount = amountLeft + amountRight;
+//                 var amount = amountLeft + amountRight;
     
-                if (amount > 0) {
-                  $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(' + amountLeft + 'px,0,0)';
-                  $element[0].style.width = ($window.innerWidth - amount) + 'px';
-                  content.offsetX = amountLeft;
-                } else {
-                  $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(0,0,0)';
-                  $element[0].style.width = '';
-                  content.offsetX = 0;
-                }
-                // reset incase left gets grabby
-                //$element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(0,0,0)';
-              }),
-              enableAnimation: function() {
-                $scope.animationEnabled = true;
-                $element[0].classList.add('menu-animated');
-              },
-              disableAnimation: function() {
-                $scope.animationEnabled = false;
-                $element[0].classList.remove('menu-animated');
-              },
-              offsetX: 0
-            };
-            sideMenuCtrl.setContent(content);
-      }
+//                 if (amount > 0) {
+//                   $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(' + amountLeft + 'px,0,0)';
+//                   $element[0].style.width = ($window.innerWidth - amount) + 'px';
+//                   content.offsetX = amountLeft;
+//                 } else {
+//                   $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(0,0,0)';
+//                   $element[0].style.width = '';
+//                   content.offsetX = 0;
+//                 }
+//                 // reset incase left gets grabby
+//                 //$element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(0,0,0)';
+//               }),
+//               enableAnimation: function() {
+//                 $scope.animationEnabled = true;
+//                 $element[0].classList.add('menu-animated');
+//               },
+//               disableAnimation: function() {
+//                 $scope.animationEnabled = false;
+//                 $element[0].classList.remove('menu-animated');
+//               },
+//               offsetX: 0
+//             };
+//             sideMenuCtrl.setContent(content);
+//       }
       
-      function prelink($scope, $element, $attr, sideMenuCtrl) {
-            var content = {
-              element: element[0],
-              onDrag: function() {},
-              endDrag: function() {},
-              setCanScroll: function(canScroll) {
-              var c = $element[0].querySelector('.scroll');
+//       function prelink($scope, $element, $attr, sideMenuCtrl) {
+//             var content = {
+//               element: element[0],
+//               onDrag: function() {},
+//               endDrag: function() {},
+//               setCanScroll: function(canScroll) {
+//               var c = $element[0].querySelector('.scroll');
     
-                if (!c) {
-                  return;
-                }
+//                 if (!c) {
+//                   return;
+//                 }
     
-                var content = angular.element(c.parentElement);
-                if (!content) {
-                  return;
-                }
+//                 var content = angular.element(c.parentElement);
+//                 if (!content) {
+//                   return;
+//                 }
     
-                // freeze our scroll container if we have one
-                var scrollScope = content.scope();
-                scrollScope.scrollCtrl && scrollScope.scrollCtrl.freezeScrollShut(!canScroll);
-              },
-              getTranslateX: function() {
-                return $scope.sideMenuContentTranslateX || 0;
-              },
-              setTranslateX: ionic.animationFrameThrottle(function(amount) {
-                var xTransform = content.offsetX + amount;
-                $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(' + xTransform + 'px,0,0)';
-                $timeout(function() {
-                  $scope.sideMenuContentTranslateX = amount;
-                });
-              }),
-              setMarginLeft: ionic.animationFrameThrottle(function(amount) {
-                if (amount) {
+//                 // freeze our scroll container if we have one
+//                 var scrollScope = content.scope();
+//                 scrollScope.scrollCtrl && scrollScope.scrollCtrl.freezeScrollShut(!canScroll);
+//               },
+//               getTranslateX: function() {
+//                 return $scope.sideMenuContentTranslateX || 0;
+//               },
+//               setTranslateX: ionic.animationFrameThrottle(function(amount) {
+//                 var xTransform = content.offsetX + amount;
+//                 $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(' + xTransform + 'px,0,0)';
+//                 $timeout(function() {
+//                   $scope.sideMenuContentTranslateX = amount;
+//                 });
+//               }),
+//               setMarginLeft: ionic.animationFrameThrottle(function(amount) {
+//                 if (amount) {
                    
-                  amount = parseInt(amount, 10);
-                  $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(' + amount + 'px,0,0)';
-                  $element[0].style.width = ($window.innerWidth - amount) + 'px';
-                  content.offsetX = amount;
-                } else {
-                  $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(0,0,0)';
-                  $element[0].style.width = '';
-                  content.offsetX = 0;
-                }
-              }),
-              setMarginRight: ionic.animationFrameThrottle(function(amount) {
-                if (amount) {
-                  amount = parseInt(amount, 10);
-                  $element[0].style.width = ($window.innerWidth - amount) + 'px';
-                  content.offsetX = amount;
-                } else {
-                  $element[0].style.width = '';
-                  content.offsetX = 0;
-                }
-                // reset incase left gets grabby
-                $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(0,0,0)';
-              }),
-              setMarginLeftAndRight: ionic.animationFrameThrottle(function(amountLeft, amountRight) {
-                amountLeft = amountLeft && parseInt(amountLeft, 10) || 0;
-                amountRight = amountRight && parseInt(amountRight, 10) || 0;
+//                   amount = parseInt(amount, 10);
+//                   $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(' + amount + 'px,0,0)';
+//                   $element[0].style.width = ($window.innerWidth - amount) + 'px';
+//                   content.offsetX = amount;
+//                 } else {
+//                   $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(0,0,0)';
+//                   $element[0].style.width = '';
+//                   content.offsetX = 0;
+//                 }
+//               }),
+//               setMarginRight: ionic.animationFrameThrottle(function(amount) {
+//                 if (amount) {
+//                   amount = parseInt(amount, 10);
+//                   $element[0].style.width = ($window.innerWidth - amount) + 'px';
+//                   content.offsetX = amount;
+//                 } else {
+//                   $element[0].style.width = '';
+//                   content.offsetX = 0;
+//                 }
+//                 // reset incase left gets grabby
+//                 $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(0,0,0)';
+//               }),
+//               setMarginLeftAndRight: ionic.animationFrameThrottle(function(amountLeft, amountRight) {
+//                 amountLeft = amountLeft && parseInt(amountLeft, 10) || 0;
+//                 amountRight = amountRight && parseInt(amountRight, 10) || 0;
     
-                var amount = amountLeft + amountRight;
+//                 var amount = amountLeft + amountRight;
     
-                if (amount > 0) {
-                  $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(' + amountLeft + 'px,0,0)';
-                  $element[0].style.width = ($window.innerWidth - amount) + 'px';
-                  content.offsetX = amountLeft;
-                } else {
-                  $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(0,0,0)';
-                  $element[0].style.width = '';
-                  content.offsetX = 0;
-                }
-                // reset incase left gets grabby
-                //$element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(0,0,0)';
-              }),
-              enableAnimation: function() {
-                $scope.animationEnabled = true;
-                $element[0].classList.add('menu-animated');
-              },
-              disableAnimation: function() {
-                $scope.animationEnabled = false;
-                $element[0].classList.remove('menu-animated');
-              },
-              offsetX: 0
-            };
-            sideMenuCtrl.setContent(content);
-      }
-    }
-  };
-}]);
+//                 if (amount > 0) {
+//                   $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(' + amountLeft + 'px,0,0)';
+//                   $element[0].style.width = ($window.innerWidth - amount) + 'px';
+//                   content.offsetX = amountLeft;
+//                 } else {
+//                   $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(0,0,0)';
+//                   $element[0].style.width = '';
+//                   content.offsetX = 0;
+//                 }
+//                 // reset incase left gets grabby
+//                 //$element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(0,0,0)';
+//               }),
+//               enableAnimation: function() {
+//                 $scope.animationEnabled = true;
+//                 $element[0].classList.add('menu-animated');
+//               },
+//               disableAnimation: function() {
+//                 $scope.animationEnabled = false;
+//                 $element[0].classList.remove('menu-animated');
+//               },
+//               offsetX: 0
+//             };
+//             sideMenuCtrl.setContent(content);
+//       }
+//     }
+//   };
+// }])
+;

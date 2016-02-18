@@ -10,6 +10,9 @@ Instructions:
 8.  Inject 'SSFTranslate' into the app.js file.
 9.  Place '<script src="js/SSFServices/SSFTranslate.js"></script>' into the index.html
             file above the app.js.
+10. Place the following below this '<script src="lib/ionic/js/ionic.bundle.js"></script>':
+            <script src="lib/angular-translate/angular-translate.js"></script>
+            <script src="lib/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
 10. Place the following object inside a language file:
 {
     "SSF_CONFIG_CONSTANTS": {
@@ -17,6 +20,7 @@ Instructions:
 }
 11. Check each service for text that gets translated.
             Known services: SSFAlerts.js & SSFCache.js
+12. If you don't already have SSFConfig, add it now. Then you are finished.
 
 Examples:
 1.

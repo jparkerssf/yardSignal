@@ -1,7 +1,7 @@
 /* A single place to configure all of the SSFServices
 Instructions:
 1.  Inject 'SSFConfig' into the app.js file before any of the other SSFServices.
-2.  Place '<script src="js/SSFServices/SSFConfig.js"></script>' into the index.html
+2.  Place '<script src="js/SSFConfig.js"></script>' into the index.html
             file above the app.js.
 3.  Check all existing SSFServices for .config blocks of code, comment those out and include
     them in this file (with the exception of language related .config(...)s). If those files

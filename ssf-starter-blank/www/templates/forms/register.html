@@ -7,7 +7,7 @@
     </div>
     
     <form name="registerForm" class="padding" ng-submit="submitRegisterForm(registerForm)" novalidate>
-      <div class="list">
+      <div class="list list-inset">
         
         <ion-input class="item item-input">
           <ion-label class="item-text-wrap">
@@ -21,7 +21,7 @@
             {{'FORMS.INPUTS.PASSWORD' | translate }}
           </ion-label>
           <input type="password" name="password" ng-model="registerData.password" pattern="(?=^.{8,}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
-          <a class=" button button-small button-icon icon ion-ios-help-outline ng-class:{'assertive' : registerForm.password.$invalid && registerForm.$submitted}" ng-click="showPopup($event, 'FORMS.POPOVERS.1' ,true)" style="top: 3px"></a>
+          <icon class="button button-small button-icon icon ion-ios-help-outline input-icon ng-class:{'assertive' : registerForm.password.$invalid && registerForm.$submitted}" ng-click="showPopup($event, 'FORMS.POPOVERS.1' ,true)"></icon>
         </ion-input>
         
         <ion-input class="item item-input">
