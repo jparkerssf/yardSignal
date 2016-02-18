@@ -1,8 +1,15 @@
 angular.module('starter.controllers')
 .controller('RegisterCtrl', ['$scope', '$http', '$state', '$window', '$ionicHistory',
         '$translate', '$rootScope', '$q', 'UsersService', 'SSFTranslateService', 'SSFConfigConstants',
-        function($scope, $http, $state, $window, $ionicHistory,
-        $translate, $rootScope, $q, UsersService, SSFTranslateService, SSFConfigConstants) {
+        '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion',
+        function($scope, $http, $state, $window, $ionicHistory,$translate, $rootScope,
+        $q, UsersService, SSFTranslateService, SSFConfigConstants, $timeout, ionicMaterialInk,
+        ionicMaterialMotion) {
+    
+    $timeout(function(){
+        ionicMaterialInk.displayEffect();
+        ionicMaterialMotion.ripple();
+    },0);
     
     $scope.registerData = {'hasAcceptedEULA': false};
     

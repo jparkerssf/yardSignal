@@ -6,7 +6,7 @@
       {{'FORMS.LOGIN_TITLE' | translate}}
     </div>
     <form class="padding" name="loginForm" novalidate ng-submit="doLogin(loginForm)">
-      <div class="list list-inset">
+      <div class="list list-inset animate-ripple">
         <ion-input class="item item-input">
           <ion-label class="item-text-wrap">
             {{'FORMS.INPUTS.EMAIL' | translate}}
@@ -25,13 +25,14 @@
           {{'FORMS.INPUTS.REMEMBER_ME' | translate}}
         </ion-checkbox>
       </div>
-      
-      <button class="button spacecaps button-block button-calm" type="submit" ion-track-tap="Login-tap" ion-track-data="{ mockData: 'User tapped Login'}">
-        {{'FORMS.BUTTONS.SUBMIT' | translate}}
-      </button>
-      <button class="button spacecaps button-block button-calm" type="button" ng-click="register()">
-        {{'FORMS.BUTTONS.REGISTER' | translate}}
-      </button>
+      <div class="list animate-ripple">
+        <button class="item button spacecaps button-block button-calm" type="submit" ion-track-tap="Login-tap" ion-track-data="{ mockData: 'User tapped Login'}">
+          {{'FORMS.BUTTONS.SUBMIT' | translate}}
+        </button>
+        <button class="item button spacecaps button-block button-calm" type="button" ng-click="register()">
+          {{'FORMS.BUTTONS.REGISTER' | translate}}
+        </button>
+      </div>
     </form>
   </ion-content>
 </ion-view>

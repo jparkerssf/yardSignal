@@ -1,8 +1,13 @@
 angular.module('starter.controllers')
-.controller('LoginCtrl',["$scope", "$window", "$state",
-    "$ionicHistory", "$rootScope", 'UsersService', 'SSFTranslateService',
-    function($scope, $window, $state, $ionicHistory, $rootScope,
-    UsersService, SSFTranslateService) {
+.controller('LoginCtrl',["$scope", "$window", "$state","$ionicHistory", "$rootScope",
+    'UsersService', 'SSFTranslateService', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion',
+    function($scope, $window, $state, $ionicHistory, $rootScope,UsersService,
+    SSFTranslateService, $timeout, ionicMaterialInk, ionicMaterialMotion) {
+  
+  $timeout(function(){
+    ionicMaterialInk.displayEffect();
+    ionicMaterialMotion.ripple();
+  },0);
   
   $scope.loginData = {};
   
