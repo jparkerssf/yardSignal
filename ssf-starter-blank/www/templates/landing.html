@@ -4,10 +4,13 @@
     <ion-content>
         <div class="padding list animate-ripple">
             <button class="item button button-block button-calm" ng-click="login()">
-                Login
+                {{'LANDING_CTRL.LOGIN' | translate }}
             </button>
             <button class="item button button-block button-calm" ng-click="register()">
-                Register
+                {{'LANDING_CTRL.REGISTER' | translate }}
+            </button>
+            <button class="item button button-block button-calm" ui-sref="navigation">
+                Debugging Navigation
             </button>
         </div>
     </ion-content>

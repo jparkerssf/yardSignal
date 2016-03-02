@@ -27,7 +27,9 @@
         }
     },
     "LANDING_CTRL": {
-        "TITLE": "Home"
+        "TITLE": "Home",
+        "LOGIN": "Login",
+        "REGISTER": "Register"
     },
     "FORMS": {
         "LOGIN_TITLE": "Login",

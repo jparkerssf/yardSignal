@@ -53,5 +53,24 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers',
     url: '/lobby',
     templateUrl: 'templates/lobby.html',
     controller: 'LobbyCtrl'
+  })
+  .state('navigation', {
+    url: '/navigation',
+    template:
+      '<ion-view hide-nav-bar="false">' +
+        '<ion-nav-buttons></ion-nav-buttons>' +
+        '<ion-content class="padding">' +
+          '<button class="button button-block button-calm" ng-repeat="nav in navLinks" ui-sref="{{nav}}">{{nav}}</button>' +
+        '</ion-content>' +
+      '</ion-view>',
+    controller: function($state, $scope) {
+      var stateArray = $state.get();
+      $scope.navLinks = [];
+      for(var i in stateArray) {
+        if(stateArray[i].name !== '' && stateArray[i].name !== 'navigation' && stateArray[i].name !== 'update') {
+          $scope.navLinks.push(stateArray[i].name);
+        }
+      }
+    }
   });
 }]);
