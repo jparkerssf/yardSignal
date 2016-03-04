@@ -11,8 +11,14 @@ angular.module('starter.controllers')
   
   $scope.loginData = {};
   
+  $scope.checkbox = {};
   $scope.$on('$ionicView.enter', function() {
     // Code you want executed every time view is opened
+    if($window.localStorage.rememberMe === undefined || $window.localStorage.rememberMe === 'true') {
+      $scope.checkbox.rememberMe = true;
+    } else {
+      $scope.checkbox.rememberMe = false;
+    }
     $rootScope.stopSpinner = true;
     UsersService.getIP()
     .then(function(response) {
@@ -20,12 +26,6 @@ angular.module('starter.controllers')
     });
   });
   
-  $scope.checkbox = {};
-  if($window.localStorage["rememberMe"] === undefined || $window.localStorage["rememberMe"] == "true") {
-    $scope.checkbox.rememberMe = true;
-  } else {
-    $scope.checkbox.rememberMe = false;
-  }
   if($window.localStorage["email"] !== undefined && $scope.checkbox.rememberMe === true)
     $scope.loginData.email = $window.localStorage["email"];
   
@@ -103,9 +103,12 @@ angular.module('starter.controllers')
     });
   }
   
-  
   $scope.register = function() {
     $state.go('register');
+  };
+  
+  $scope.clickedRememberMe = function() {
+    $window.localStorage.rememberMe = $scope.checkbox.rememberMe;
   };
   
 }]);

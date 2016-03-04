@@ -23,8 +23,7 @@ angular.module('SSFFavorites', [])
     var localFavorites = undefined;
     if($window.localStorage['localFavorites'] !== undefined) {
         localFavorites = JSON.parse($window.localStorage['localFavorites']);
-    }
-    else {
+    } else {
         localFavorites = {};
     }
     
@@ -38,8 +37,7 @@ angular.module('SSFFavorites', [])
     function updateHaveFavorites() {
         if(objectSize(localFavorites) > 0) {
             haveFavorites = true;
-        }
-        else {
+        } else {
             haveFavorites = false;
         }
     }
@@ -52,8 +50,7 @@ angular.module('SSFFavorites', [])
     service.isFavorited = function(itemId) {
         if(localFavorites[itemId]) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     };
@@ -61,8 +58,7 @@ angular.module('SSFFavorites', [])
     service.favoriteToggle = function(itemId) {
         if(localFavorites[itemId]) {
             delete localFavorites[itemId];
-        }
-        else {
+        } else {
             localFavorites[itemId] = true;
             if(itemId === 'itemId') {
                 alert('ERROR: Remember to change the itemId passed from the icon being clicked to an actual ID. Also remember to change the id being passed to determine what type of icon is being used.');

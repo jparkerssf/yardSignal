@@ -71,6 +71,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers',
           $scope.navLinks.push(stateArray[i].name);
         }
       }
+      $scope.navLinks.sort();
     }
   });
 }]);
