@@ -6,6 +6,47 @@ angular.module('starter.controllers')
         $q, UsersService, SSFTranslateService, SSFConfigConstants, $timeout, ionicMaterialInk,
         ionicMaterialMotion) {
     
+    function prepData() {
+        $scope.registerData.language = $translate.use();
+        var dateToSend = new Date();
+        $scope.registerData.created = dateToSend.toUTCString();
+        $scope.registerData.lastLog = dateToSend.toUTCString();
+    }
+    
+    //sets current user's information **make sure this function mirrors the LoginCtrl function**
+    function setLocalStorage(data) {
+        $window.localStorage['rememberMe'] = $scope.checkbox.rememberMe;
+        $window.localStorage['userId'] = data.userId;
+        $window.localStorage['token'] = data.id;
+        if($scope.checkbox.rememberMe) {
+            $window.localStorage["email"] = $scope.registerData.email;
+        } else {
+            delete $window.localStorage["email"];
+        }
+        $scope.registerData = {'hasAcceptedEULA': false};
+        setProgress();
+    }
+    
+    function setProgress() {
+        // return UsersService.updateUser($window.localStorage.token, $window.localStorage.userId, {})
+        // .then(function(response){
+            $ionicHistory.nextViewOptions({
+                disableAnimate: false,
+                disableBack: true
+            });
+            return $state.go('lobby');
+        // });
+    }
+    
+    function retryRegister(form) {
+        return SSFTranslateService.showConfirm("ERROR.TITLE", "ERROR.SOME_RETRY_ERROR")
+        .then(function(res) {
+            if(res)
+                $scope.submitRegisterForm(form);
+        });
+    }
+    
+    
     $timeout(function(){
         ionicMaterialInk.displayEffect();
         ionicMaterialMotion.ripple();
@@ -29,13 +70,6 @@ angular.module('starter.controllers')
         });
     });
     $scope.repeatPassword = {};
-    
-    function prepData() {
-        $scope.registerData.language = $translate.use();
-        var dateToSend = new Date();
-        $scope.registerData.created = dateToSend.toUTCString();
-        $scope.registerData.lastLog = dateToSend.toUTCString();
-    }
     
     $scope.submitRegisterForm = function(form) {
         if(form.password.$invalid)
@@ -68,30 +102,9 @@ angular.module('starter.controllers')
         return SSFTranslateService.showPopup($scope, $event, body);
     };
     
-    //sets current user's information **make sure this function mirrors the LoginCtrl function**
-    function setLocalStorage(data) {
+    $scope.clickedRememberMe = function() {
         $window.localStorage['rememberMe'] = $scope.checkbox.rememberMe;
-        $window.localStorage['userId'] = data.userId;
-        $window.localStorage['token'] = data.id;
-        if($scope.checkbox.rememberMe) {
-            $window.localStorage["email"] = $scope.registerData.email;
-        } else {
-            delete $window.localStorage["email"];
-        }
-        $scope.registerData = {'hasAcceptedEULA': false};
-        setProgress();
-    }
-    
-    function setProgress() {
-        // return UsersService.updateUser($window.localStorage.token, $window.localStorage.userId, {})
-        // .then(function(response){
-            $ionicHistory.nextViewOptions({
-                disableAnimate: false,
-                disableBack: true
-            });
-            return $state.go('lobby');
-        // });
-    }
+    };
     
     $scope.navEula = function() {
         if($window.cordova && cordova.InAppBrowser){
@@ -100,18 +113,4 @@ angular.module('starter.controllers')
             $window.open(SSFConfigConstants.eulaUrl);
         }
     };
-    
-    function retryRegister(form) {
-        return SSFTranslateService.showConfirm("ERROR.TITLE", "ERROR.SOME_RETRY_ERROR")
-        .then(function(res) {
-            if(res)
-                $scope.submitRegisterForm(form);
-        });
-    }
-    
-    $scope.clickedRememberMe = function() {
-        $window.localStorage['rememberMe'] = $scope.checkbox.rememberMe;
-    };
-    
-}])
-;
+}]);
