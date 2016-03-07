@@ -12,7 +12,7 @@ Instructions:
 
 angular.module('SSFConfig', [])
 .constant('SSFConfigConstants', {
-    //  if translation is a feature of the app, switch from false to true and review step 4.
+    //  if translation is a feature of the app, switch 'shouldTranslate' from false to true and review step 4.
     'shouldTranslate': true,
     'eulaUrl': 'http://www.zebitinstantbudget.com/end-user-license-agreement/'
 })
@@ -34,6 +34,14 @@ angular.module('SSFConfig', [])
     SSFConfigConstants['EndpointUrl'] = {
         'url': 'https://jbrowns-backends-jbrownssf.c9users.io/'
     };
+}])
+.config(['SSFConfigConstants', function(SSFConfigConstants) {
+  	//SSF Color Theme
+	SSFConfigConstants['SSFCssService'] = {
+		'buttonPrimary': '#A34D24',
+		'buttonSecondary': '#808285',
+		'header': '#EB7C23'
+	};
 }])
 
 

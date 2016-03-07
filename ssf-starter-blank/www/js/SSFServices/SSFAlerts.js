@@ -64,15 +64,12 @@ angular.module('SSFAlerts', [])
     } else {
         serviceText = SSFConfigConstants.SSFAlertsService.notTranslated;
     }
-    service.updateServiceText = function() {
-        if(SSFConfigConstants.shouldTranslate) {
-            serviceText = SSFConfigConstants.SSFAlertsService.textTranslated;
-        } else {
-            serviceText = SSFConfigConstants.SSFAlertsService.notTranslated;
-        }
+    service.updateServiceText = function(array) {
+        serviceText = array;
     };
     
     service.showAlert = function(title, body, okText) {
+        // service.updateServiceText();
         if(navigator.notification === undefined) {
             var alertPopup = $ionicPopup.alert({
                 title: title,
@@ -90,6 +87,7 @@ angular.module('SSFAlerts', [])
     };
     
     service.showConfirm = function(title, body, okText, cancelText) {
+        // service.updateServiceText();
         if(navigator.notification == undefined) {
             var confirmPopup = $ionicPopup.confirm({
                 title: title,
@@ -118,6 +116,7 @@ angular.module('SSFAlerts', [])
     };
     
     service.showPopup = function($scope, $event, body){
+        // service.updateServiceText();
         var template = 
             '<ion-popover-view style="height:auto">' +
                 '<ion-content class="center text-center padding-horizontal" scroll="false" style="position:relative;">' +

@@ -16,3 +16,18 @@
 .subheader {
     font-size: 20px;
 }
+
+
+/*these '.ssf-' classes are for the SSFCssServices*/
+.ssf-button {
+    font-weight: bold !important;
+}
+.ssf-button-inverted {
+    font-weight: bold !important;
+}
+.ssf-bar-header {
+    color: #808285 !important;
+}
+.ssf-tabs {
+    font-weight: bold !important;
+}

@@ -59,13 +59,8 @@ angular.module('SSFCache', [])
     else {
         serviceText = SSFConfigConstants.SSFCacheService.notTranslated;
     }
-    service.updateServiceText = function() {
-        if(SSFConfigConstants.shouldTranslate) {
-            serviceText = SSFConfigConstants.SSFCacheService.textTranslated;
-        }
-        else {
-            serviceText = SSFConfigConstants.SSFCacheService.notTranslated;
-        }
+    service.updateServiceText = function(array) {
+        serviceText = array;
     };
 
 	function updateArray(storageName) {

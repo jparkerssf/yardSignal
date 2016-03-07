@@ -25,7 +25,7 @@ Instructions:
 Examples:
 1.
     // to change the language being used:
-    SSFTranslateService.changeLanguage('en'); **remember to also $rootScope.$broadcast('request:ssftranslate');
+    SSFTranslateService.changeLanguage('en');
     // to translate text (only accepts arrays):
     var languageReferenceText = ['REFERENCE.TEXT.ONE', 'REFERENCE.TEXT.TWO'];
     var translatedText = SSFTranslateService.translate(languageReferenceText);
@@ -35,14 +35,24 @@ Listeners:
 */
 
 angular.module('SSFTranslate', [])
-.service('SSFTranslateService', ['$translate', 'SSFConfigConstants', '$window', '$rootScope',
-        function($translate, SSFConfigConstants, $window, $rootScope) {
+.service('SSFTranslateService', ['$translate', 'SSFConfigConstants', '$window', '$rootScope', 'SSFAlertsService',
+        'SSFCacheService',
+        function($translate, SSFConfigConstants, $window, $rootScope, SSFAlertsService, SSFCacheService) {
     var service = this;
     service.changeLanguage = function(newLanguage) {
         $window.localStorage['language'] = newLanguage;
         $translate.use(newLanguage)
         .then(function(res) {
-            $rootScope.$broadcast('request:ssftranslate');
+            service.translate(SSFConfigConstants['SSFAlertsService']['languageFileReference'])
+            .then(function(res) {
+                SSFConfigConstants['SSFAlertsService']['textTranslated'] = res;
+                SSFAlertsService.updateServiceText(res);
+            });
+            service.translate(SSFConfigConstants['SSFCacheService']['languageFileReference'])
+            .then(function(res) {
+                SSFConfigConstants['SSFCacheService']['textTranslated'] = res;
+                SSFCacheService.updateServiceText(res);
+            });
         });
     };
     service.translate = function(array) {
@@ -77,24 +87,6 @@ angular.module('SSFTranslate', [])
             return SSFAlertsService.showPopup($scope, $event, res[0]);
         });
     };
-}])
-.run(['$rootScope', 'SSFConfigConstants', 'SSFTranslateService', 'SSFAlertsService', 'SSFCacheService',
-        function($rootScope, SSFConfigConstants, SSFTranslateService, SSFAlertsService, SSFCacheService) {
-    $rootScope.$on('request:ssftranslate', function() {
-        for(var serviceName in SSFConfigConstants) {
-            for(var serviceContentObjectNames in SSFConfigConstants[serviceName]) {
-                if(serviceContentObjectNames === 'languageFileReference') {
-                    SSFConfigConstants[serviceName]['textTranslated'] = SSFTranslateService.translate(SSFConfigConstants[serviceName][serviceContentObjectNames])
-                    .then(function(res) {
-                        return res;
-                    });
-                }
-            }
-        }
-        SSFAlertsService.updateServiceText();
-        SSFCacheService.updateServiceText();
-    });
-    $rootScope.$broadcast('request:ssftranslate');
 }])
 .constant('LANGUAGE_CODES', {
         "ENGLISH": "en",

@@ -18,12 +18,10 @@
         <ion-checkbox ng-model="checkbox.rememberMe" class="no-border checkbox-calm" ng-change="clickedRememberMe()">
           {{'FORMS.INPUTS.REMEMBER_ME' | translate}}
         </ion-checkbox>
-      </div>
-      <div class="list animate-ripple">
-        <button class="item button button-block button-calm" type="submit" ion-track-tap="Login-tap" ion-track-data="{ mockData: 'User tapped Login'}">
+        <button class="item button button-block button-calm ssf-button" type="submit" ion-track-tap="Login-tap" ion-track-data="{ mockData: 'User tapped Login'}">
           {{'FORMS.BUTTONS.SUBMIT' | translate}}
         </button>
-        <button class="item button button-block button-calm" type="button" ng-click="register()">
+        <button class="item button button-block button-calm ssf-button-inverted" type="button" ng-click="register()">
           {{'FORMS.BUTTONS.REGISTER' | translate}}
         </button>
       </div>

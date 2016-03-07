@@ -22,7 +22,11 @@
             "OFFLINE": "We could not retrieve your data while you are offline.",
             "UNREGISTERED": "There was a problem with authenticating your session. Please sign in."
         },
-        "SSF_DEPLOY" : {
+        "SSF_DEPLOY_SERVICE": {
+            "TITLE": "Update Alert",
+            "BODY": "An update is ready for this application. Do you want to update now?",
+            "YES": "Yes",
+            "NO": "No",
             "UPDATING": "Wait while we update your application"
         }
     },
