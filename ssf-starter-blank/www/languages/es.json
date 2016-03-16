@@ -14,8 +14,8 @@
     },
     "SSF_CONFIG_CONSTANTS": {
         "SSF_ALERTS_SERVICE": {
-            "OKAY": "OK",
-            "CANCEL": "Cancel"
+            "OKAY": "Vale",
+            "CANCEL": "Nine"
         },
         "SSF_CACHE_SERVICE": {
             "TITLE": "Error",

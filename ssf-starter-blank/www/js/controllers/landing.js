@@ -2,6 +2,7 @@ angular.module('starter.controllers', [])
 .controller('LandingCtrl', ['$scope', '$rootScope', '$state', '$ionicHistory', '$timeout', 'ionicMaterialInk',
         'ionicMaterialMotion',
         function($scope, $rootScope, $state, $ionicHistory, $timeout, ionicMaterialInk, ionicMaterialMotion) {
+    
     $timeout(function(){
         ionicMaterialInk.displayEffect();
         ionicMaterialMotion.ripple();

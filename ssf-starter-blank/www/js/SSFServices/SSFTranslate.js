@@ -65,6 +65,7 @@ angular.module('SSFTranslate', [])
             return returnArray;
         });
     };
+    service.changeLanguage($translate.use());
 }])
 .run(['SSFTranslateService', 'SSFAlertsService',
         function(SSFTranslateService, SSFAlertsService) {

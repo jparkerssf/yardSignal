@@ -20,7 +20,7 @@ Instructions:
 7.  If you are making an app with a side menu, continue on to step 8. Otherwise, you have
             finsihed setting up the directives file.
 8.  Go into your menu.html file and include this:
-            ' expose-aside-when="{{minWidth}}"' inside the:
+            ' expose-aside-when="{{minWidth}}" ng-style="style()' inside the:
             '<ion-side-menu side="left">''
             so it looks like:
             '<ion-side-menu side="left" expose-aside-when="{{minWidth}}">'
@@ -30,7 +30,6 @@ Instructions:
 
 
 angular.module('SSFDirectives', [])
-// .constant('CONTENT_WIDTH', 900)
 .directive('resize', ["$window", "SSFConfigConstants", '$rootScope',
         function ($window, SSFConfigConstants, $rootScope) {
     

@@ -57,10 +57,10 @@ angular.module('starter', ['ionic', 'ionic.service.core', 'starter.controllers',
   .state('navigation', {
     url: '/navigation',
     template:
-      '<ion-view hide-nav-bar="false">' +
+      '<ion-view hide-nav-bar="false" title="Navigation">' +
         '<ion-nav-buttons></ion-nav-buttons>' +
         '<ion-content class="padding">' +
-          '<button class="button button-block button-calm" ng-repeat="nav in navLinks" ui-sref="{{nav}}">{{nav}}</button>' +
+          '<button class="button button-block button-calm ssf-button" ng-repeat="nav in navLinks" ui-sref="{{nav}}">{{nav}}</button>' +
         '</ion-content>' +
       '</ion-view>',
     controller: function($state, $scope) {
