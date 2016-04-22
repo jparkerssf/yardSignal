@@ -90,6 +90,7 @@ angular.module('starter.controllers')
             // $ionicAnalytics.setGlobalProperties({
             //     ZibID: response.data.userId
             // });
+            $scope.repeatPassword = {};
             setLocalStorage(response.data);
         }, function(err) {
             if(err.status === 204)
