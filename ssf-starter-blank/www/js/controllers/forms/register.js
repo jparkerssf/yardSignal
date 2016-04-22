@@ -16,8 +16,8 @@ angular.module('starter.controllers')
     //sets current user's information **make sure this function mirrors the LoginCtrl function**
     function setLocalStorage(data) {
         $window.localStorage['rememberMe'] = $scope.checkbox.rememberMe;
-        $window.localStorage['userId'] = data.userId;
-        $window.localStorage['token'] = data.id;
+        $window.localStorage['userId'] = data.id;
+        $window.localStorage['token'] = data.token;
         if($scope.checkbox.rememberMe) {
             $window.localStorage["email"] = $scope.registerData.email;
         } else {

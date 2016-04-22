@@ -14,7 +14,8 @@
   vertical-align: bottom !important;
 }
 .subheader {
-    font-size: 20px;
+    font-size: 20px !important;
+    text-align: center !important;
 }
 
 

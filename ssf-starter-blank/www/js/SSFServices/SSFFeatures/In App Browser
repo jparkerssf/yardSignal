@@ -4,9 +4,9 @@ Instructions:
 2.  ionic plugin add cordova-plugin-inappbrowser
 3.  the following if else statement is all that's needed. Just change the URL.
 if($window.cordova && cordova.InAppBrowser){
-  // cordova.InAppBrowser.open('https://www.zebit.com/privacy-policy', '_blank', 'location=no,hardwareback=no');
+  // cordova.InAppBrowser.open('http://www.softstackfactory.com/eula-content/', '_blank', 'location=no,hardwareback=no');
 }
 else {
-  // $window.open('https://www.zebit.com/privacy-policy');
+  // $window.open('http://www.softstackfactory.com/eula-content/');
 }
 */

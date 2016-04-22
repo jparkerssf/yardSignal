@@ -14,7 +14,7 @@ angular.module('SSFConfig', [])
 .constant('SSFConfigConstants', {
     //  if translation is a feature of the app, switch 'shouldTranslate' from false to true and review step 4.
     'shouldTranslate': true,
-    'eulaUrl': 'http://www.zebitinstantbudget.com/end-user-license-agreement/'
+    'eulaUrl': 'http://www.softstackfactory.com/eula-content/'
 })
 .config(['SSFConfigConstants', function(SSFConfigConstants) {
     SSFConfigConstants['SSFDirectives'] = {
@@ -32,7 +32,7 @@ angular.module('SSFConfig', [])
 }])
 .config(['SSFConfigConstants', function(SSFConfigConstants) {
     SSFConfigConstants['EndpointUrl'] = {
-        'url': 'https://jbrowns-backends-jbrownssf.c9users.io/'
+        'url': 'https://scheduling-app-jbrownssf-1.c9users.io/api/'
     };
 }])
 .config(['SSFConfigConstants', function(SSFConfigConstants) {

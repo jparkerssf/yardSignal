@@ -7,7 +7,7 @@ angular.module("RESTServices", [])
         return SSFConfigConstants.EndpointUrl.url + path;
     }
     service.create = function(newUser) {
-        return $http.post(getUrl, newUser);
+        return $http.post(getUrl(), newUser);
     };
     service.login = function(user) {
         user["ttl"] = 1209600000;
