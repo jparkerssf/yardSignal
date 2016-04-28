@@ -1,0 +1,30 @@
+<ion-view view-title="{{'APP.NAME' | translate}}" hide-nav-bar="false">
+  <!-- Include ion-nav-buttons in every index to avoid breaking the app (ionic material bug) -->
+  <ion-nav-buttons></ion-nav-buttons> 
+  <ion-content>
+    <div class="list animate-ripple">
+      <div class="item padding subheader">
+        {{'FORMS.LOGIN_TITLE' | translate}}
+      </div>
+      <form class="padding" name="loginForm" novalidate ng-submit="doLogin(loginForm)">
+        <label class="item item-input item-floating-label" ng-class="{ 'has-errors' : loginForm.email.$invalid && loginForm.$submitted}">
+          <span class="input-label">{{'FORMS.INPUTS.EMAIL' | translate}}</span>
+          <input type="email" name="email" ng-model="loginData.email" placeholder="{{'FORMS.INPUTS.EMAIL' | translate}}" required>
+        </label>
+        <label class="item item-input item-floating-label" ng-class="{ 'has-errors' : loginForm.password.$invalid && loginForm.$submitted}">
+          <span class="input-label">{{'FORMS.INPUTS.PASSWORD' | translate}}</span>
+          <input type="password" name="password" ng-model="loginData.password" placeholder="{{'FORMS.INPUTS.PASSWORD' | translate}}" required>
+        </label>
+        <ion-checkbox ng-model="checkbox.rememberMe" class="no-border checkbox-calm" ng-change="clickedRememberMe()">
+          {{'FORMS.INPUTS.REMEMBER_ME' | translate}}
+        </ion-checkbox>
+        <button class="item button button-block button-calm ssf-button" type="submit" ion-track-tap="Login-tap" ion-track-data="{ mockData: 'User tapped Login'}">
+          {{'FORMS.BUTTONS.SUBMIT' | translate}}
+        </button>
+        <button class="item button button-block button-calm ssf-button-inverted" type="button" ng-click="register()">
+          {{'FORMS.BUTTONS.REGISTER' | translate}}
+        </button>
+      </form>
+    </div>
+  </ion-content>
+</ion-view>

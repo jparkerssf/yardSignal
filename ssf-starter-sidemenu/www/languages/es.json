@@ -1,0 +1,53 @@
+{
+    "APP": {
+        "NAME": "Soft Stack Factory"
+    },
+    "ERROR": {
+        "TITLE": "Error",
+        "OFFLINE": "We cannot complete this action while you are offline.",
+        "INCOMPLETE_FORM": "Check to make sure all required fields are filled in.",
+        "INTERNET_CONNECTION": "Please connect to the internet and try again.",
+        "ACCEPT_EULA": "You must first accept our End User License Agreement in order to register with us.",
+        "PASSWORDS_UNMATCHED": "Your passwords do not match.",
+        "EMAIL_TAKEN": "That email has already been used.",
+        "SOME_RETRY_ERROR": "Something went wrong, would you like to try again?"
+    },
+    "SSF_CONFIG_CONSTANTS": {
+        "SSF_ALERTS_SERVICE": {
+            "OKAY": "Vale",
+            "CANCEL": "Nine"
+        },
+        "SSF_CACHE_SERVICE": {
+            "TITLE": "Error",
+            "OFFLINE": "We could not retrieve your data while you are offline.",
+            "UNREGISTERED": "There was a problem with authenticating your session. Please sign in."
+        },
+        "SSF_DEPLOY" : {
+            "UPDATING": "Wait while we update your application"
+        }
+    },
+    "LANDING_CTRL": {
+        "TITLE": "Casa",
+        "LOGIN": "Login",
+        "REGISTER": "Register"
+    },
+    "FORMS": {
+        "LOGIN_TITLE": "Login",
+        "REGISTER_TITLE": "Register",
+        "INPUTS": {
+            "EMAIL": "Email",
+            "PASSWORD": "Password",
+            "REPEAT_PASSWORD": "Repeat Password",
+            "EULA": "End User License Agreement",
+            "REMEMBER_ME": "Remember Me"
+        },
+        "BUTTONS": {
+            "SUBMIT": "Submit",
+            "REGISTER": "Register",
+            "EULA": "EULA"
+        },
+        "POPOVERS": {
+            "1": "Your password must be at least 8 characters long and contain one of each of the following: An upper and lower case letter, a number, and a special character which include, but are not limited to: ! @ # $"
+        }
+    }
+}
