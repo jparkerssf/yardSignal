@@ -1,7 +1,7 @@
 angular.module('starter.controllers')
 .controller('LoginCtrl',["$scope", "$window", "$state","$ionicHistory", "$rootScope",
-    'UsersService', 'SSFTranslateService', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion',
-    function($scope, $window, $state, $ionicHistory, $rootScope,UsersService,
+    'SSFUsersREST', 'SSFTranslateService', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion',
+    function($scope, $window, $state, $ionicHistory, $rootScope, SSFUsersREST,
     SSFTranslateService, $timeout, ionicMaterialInk, ionicMaterialMotion) {
   
   //sets current user's information **make sure this function mirrors the RegisterCtrl function**
@@ -64,7 +64,7 @@ angular.module('starter.controllers')
       $scope.checkbox.rememberMe = false;
     }
     $rootScope.stopSpinner = true;
-    UsersService.getIP()
+    SSFUsersREST.getIP()
     .then(function(response) {
       $scope.loginData.logIP = response.data;
     });
@@ -75,7 +75,7 @@ angular.module('starter.controllers')
       return SSFTranslateService.showAlert("ERROR.TITLE", "ERROR.INCOMPLETE_FORM");
     var dateToSend = new Date();
     $scope.loginData.lastLog = dateToSend.toUTCString();
-    UsersService.login($scope.loginData)
+    SSFUsersREST.login($scope.loginData)
     .then(function(response) {
       //If the data is null, it means there is no internet connection.
       if(response.data === null)

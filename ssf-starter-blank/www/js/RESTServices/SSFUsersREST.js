@@ -1,5 +1,5 @@
 angular.module("RESTServices", [])
-.service('UsersService', ['SSFConfigConstants', '$http',
+.service('SSFUsersREST', ['SSFConfigConstants', '$http',
         function(SSFConfigConstants, $http) {
     var path = 'AppUsers/',
     service = this;

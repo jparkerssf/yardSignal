@@ -1,9 +1,9 @@
 angular.module('starter.controllers')
 .controller('RegisterCtrl', ['$scope', '$http', '$state', '$window', '$ionicHistory',
-        '$translate', '$rootScope', '$q', 'UsersService', 'SSFTranslateService', 'SSFConfigConstants',
+        '$translate', '$rootScope', '$q', 'SSFUsersREST', 'SSFTranslateService', 'SSFConfigConstants',
         '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion',
         function($scope, $http, $state, $window, $ionicHistory,$translate, $rootScope,
-        $q, UsersService, SSFTranslateService, SSFConfigConstants, $timeout, ionicMaterialInk,
+        $q, SSFUsersREST, SSFTranslateService, SSFConfigConstants, $timeout, ionicMaterialInk,
         ionicMaterialMotion) {
     
     function prepData() {
@@ -28,7 +28,7 @@ angular.module('starter.controllers')
     }
     
     function setProgress() {
-        // return UsersService.updateUser($window.localStorage.token, $window.localStorage.userId, {})
+        // return SSFUsersREST.updateUser($window.localStorage.token, $window.localStorage.userId, {})
         // .then(function(response){
             $ionicHistory.nextViewOptions({
                 disableAnimate: false,
@@ -63,7 +63,7 @@ angular.module('starter.controllers')
             $scope.checkbox.rememberMe = false;
         }
         $rootScope.stopSpinner = true;
-        UsersService.getIP()
+        SSFUsersREST.getIP()
         .then(function(response) {
             $scope.registerData.regIP = response.data;
             $scope.registerData.logIP = response.data;
@@ -81,7 +81,7 @@ angular.module('starter.controllers')
         if(form.$invalid)
             return SSFTranslateService.showAlert("ERROR.TITLE", "ERROR.INCOMPLETE_FORM");
         prepData();
-        UsersService.create($scope.registerData)
+        SSFUsersREST.create($scope.registerData)
         .then(function(response) {
             if(response.status === 204)
                 return SSFTranslateService.showAlert('ERROR.TITLE', 'ERROR.EMAIL_TAKEN');
