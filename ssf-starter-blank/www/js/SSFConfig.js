@@ -35,14 +35,14 @@ angular.module('SSFConfig', [])
         'url': 'https://scheduling-app-jbrownssf-1.c9users.io/api/'
     };
 }])
-.config(['SSFConfigConstants', function(SSFConfigConstants) {
-  	//SSF Color Theme
-	SSFConfigConstants['SSFCssService'] = {
-		'buttonPrimary': '#A34D24',
-		'buttonSecondary': '#808285',
-		'header': '#EB7C23'
-	};
-}])
+// .config(['SSFConfigConstants', function(SSFConfigConstants) {
+//   	//SSF Color Theme
+// 	SSFConfigConstants['SSFCssService'] = {
+// 		'buttonPrimary': '#A34D24',
+// 		'buttonSecondary': '#808285',
+// 		'header': '#EB7C23'
+// 	};
+// }])
 
 
 ;

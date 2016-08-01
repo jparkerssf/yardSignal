@@ -68,6 +68,7 @@ angular.module('SSFFavorites', [])
         $window.localStorage['localFavorites'] = JSON.stringify(localFavorites);
     };
     
+    //specificaly for the Youtube API
     service.commaConcatenatedFavorites = function($scope) {
         var favoritesString = '';
         updateHaveFavorites();

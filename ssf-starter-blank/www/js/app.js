@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic', 'ionic.service.core', 'starter.controllers',
     'ionic-material', 'pascalprecht.translate', 'SSFConfig', 'SSFAlerts', 'SSFCache',
-    'SSFConnectivity', 'SSFCss', 'SSFDirectives', 'SSFFavorites', 'SSFLogout',
+    'SSFConnectivity', 'SSFDirectives', 'SSFFavorites', 'SSFLogout',
     'SSFMailComposer', 'SSFSpinner', 'SSFTranslate', 'RESTServices'])
 
 .run(["$ionicPlatform", '$window', '$ionicHistory', '$state', '$rootScope',

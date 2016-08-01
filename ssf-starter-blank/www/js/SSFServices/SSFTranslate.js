@@ -109,6 +109,6 @@ angular.module('SSFTranslate', [])
     })
     //determinePreferredLanguage tries to look at the locale and determine the language. 
     .determinePreferredLanguage();
-    //To set the language, uncomment the next line of code and comment "determinePreferredLanguage"
-    // .preferredLanguage(LANGUAGE_CODES.ENGLISH);
+    // To set the language, uncomment the next line of code and comment "determinePreferredLanguage"
+    // .preferredLanguage(LANGUAGE_CODES.SPANISH);
 }]);
