@@ -82,6 +82,14 @@ angular.module('starter', ['ionic', 'ionic.service.core', 'starter.controllers',
     url: '/wash',
     templateUrl: 'templates/wash.html'
   })
+     .state('post', {
+    url: '/post',
+    templateUrl: 'templates/post.html'
+  })
+  .state('confirmation', {
+    url: '/confirmation',
+    templateUrl: 'templates/confirmation.html'
+  })
 
   .state('navigation', {
     url: '/navigation',

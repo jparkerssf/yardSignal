@@ -1,27 +1,80 @@
-<ion-view title=" Windows Service Order">
+<ion-view title="Order Page">
     <ion-content>
-        <h3> Enter Quantity</h3>
+       
+        <h2>Double Post Order</h2>
+          <div>
+            <div class="item item-divider">
+           Please submit a picture of where you would like your post to be placed:
+            </div>
+        </div>
+        
+        
+        <h2>Curb Appeal Services</h2>
+        <h4> Enter Quantity</h4>
         <!--Input for ordering a Face Wash-->
         <label class="item item-input">
-            <span class="input-label" >Exterior Only</span>
+            <span class="input-label"> Window Wash (Exterior Only)</span>
             <input type="number" placeholder="$5 per window">
         </label>
         <label class="item item-input">
-            <span class="input-label" >Exterior and Interior</span>
+            <span class="input-label"> Window Wash (Exterior and Interior)</span>
             <input type="number" placeholder="$8 per window">
         </label>
-        <div class="card" >
+          <!--Input for Blower Services-->
+          <label class="item item-input">
+            <span class="input-label" >Blower Services</span>
+            <input type="number" placeholder="$25 per service">
+        </label>
+         <!--Input for ordering Lawn Make UP-->
+        <label class="item item-input">
+            <span class="input-label" >Lawn Make Up Service </span>
+            <input type="number" placeholder="$25 per service">
+        </label>
+      
+         <div class="card">
             <div class="item item-divider">
-            Window Cleaning Includes:
+               Window Wash - Exterior Only
             </div>
             <div class="item item-text-wrap">
-                Polish the front of your listing with a quick window wash(up to two story house).<br>
-                $50 minimum combined services order. <br>
-                <strong>Total:</strong>
+           <strong> Quantity:</strong> &ensp; &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+           <strong> Price:</strong>
             </div>
         </div>
+        <div class="card">
+         <div class="item item-divider">
+              Window Wash - Exterior and Interior
+            </div>
+            <div class="item item-text-wrap">
+           <strong> Quantity:</strong>  &ensp; &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+           <strong> Price:</strong>
+            </div>
+        </div>
+        <div class="card">
+            <div class="item item-divider">
+                Blower Services
+            </div>
+            <div class="item item-text-wrap">
+            <strong> Quantity:</strong> &ensp; &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+            <strong> Price:</strong>
+            </div>
+        </div>
+        <div class="card">
+            <div class="item item-divider">
+                Lawn Make Up Service
+            </div>
+            <div class="item item-text-wrap">
+            <strong> Quantity:</strong>  &ensp; &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+            <strong> Price:</strong>
+            </div>
+        </div>
+
+    
+          <label class="item item-input">
+                <textarea placeholder="Please type any additional instructions here."></textarea>
+            </label>
+    
           <button class="button button-full button-positive">
-            Add to Cart
+            Submit
         </button>
     </ion-content>
 </ion-view>
