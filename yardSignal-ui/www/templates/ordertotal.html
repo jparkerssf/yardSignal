@@ -1,37 +1,7 @@
-<ion-view title="Order Page">
-    <ion-content>
-       
-        <h2>Double Post Order</h2>
-          <div>
-            <div class="item item-divider">
-           Please submit a picture of where you would like your post to be placed:
-            </div>
-        </div>
-        
-        
-        <h2>Curb Appeal Services</h2>
-        <h4> Enter Quantity</h4>
-        <!--Input for ordering a Face Wash-->
-        <label class="item item-input">
-            <span class="input-label"> Window Wash (Exterior Only)</span>
-            <input type="number" placeholder="$5 per window">
-        </label>
-        <label class="item item-input">
-            <span class="input-label"> Window Wash (Exterior and Interior)</span>
-            <input type="number" placeholder="$8 per window">
-        </label>
-          <!--Input for Blower Services-->
-          <label class="item item-input">
-            <span class="input-label" >Blower Services</span>
-            <input type="number" placeholder="$25 per service">
-        </label>
-         <!--Input for ordering Lawn Make UP-->
-        <label class="item item-input">
-            <span class="input-label" >Lawn Make Up Service </span>
-            <input type="number" placeholder="$25 per service">
-        </label>
-      
-         <div class="card">
+ <ion-view>
+  <ion-content>
+ <h3>Order Total</h3>   
+     <div class="card">
             <div class="item item-divider">
                Window Wash - Exterior Only
             </div>
@@ -67,14 +37,24 @@
             <strong> Price:</strong>
             </div>
         </div>
-
-    
-          <label class="item item-input">
+         <div class="card">
+            <div class="item item-divider">
+                Double Post
+            </div>
+            <div class="item item-text-wrap">
+            <strong> Price:</strong>
+            </div>
+        </div>
+         <label class="item item-input">
                 <textarea placeholder="Please type any additional instructions here."></textarea>
             </label>
+         <div>
+        &ensp;<strong>Order Total:</strong>
+        </div> <br>
     
+         
           <button class="button button-full button-positive">
-            Submit
+            Submit Order
         </button>
-    </ion-content>
+        </ion-content> 
 </ion-view>

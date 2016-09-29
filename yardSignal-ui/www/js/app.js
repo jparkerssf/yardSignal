@@ -62,26 +62,11 @@ angular.module('starter', ['ionic', 'ionic.service.core', 'starter.controllers',
     url: '/order',
     templateUrl: 'templates/order.html'
   })
-   .state('locationDetails', {
-    url: '/locationDetails',
-    templateUrl: 'templates/locationDetails.html'
+  .state('curb', {
+    url: '/curb',
+    templateUrl: 'templates/curb.html'
   })
-     .state('windows', {
-    url: '/windows',
-    templateUrl: 'templates/windows.html'
-  })
-    .state('lawn', {
-    url: '/lawn',
-    templateUrl: 'templates/lawn.html'
-  })
-   .state('blower', {
-    url: '/blower',
-    templateUrl: 'templates/blower.html'
-  })
-     .state('wash', {
-    url: '/wash',
-    templateUrl: 'templates/wash.html'
-  })
+    
      .state('post', {
     url: '/post',
     templateUrl: 'templates/post.html'
@@ -90,7 +75,19 @@ angular.module('starter', ['ionic', 'ionic.service.core', 'starter.controllers',
     url: '/confirmation',
     templateUrl: 'templates/confirmation.html'
   })
-
+  .state('ordertotal', {
+    url: '/ordertotal',
+    templateUrl: 'templates/ordertotal.html'
+  })
+   .state('location', {
+    url: '/location',
+    templateUrl: 'templates/location.html'
+  })
+   .state('history', {
+    url: '/history',
+    templateUrl: 'templates/history.html'
+  })
+  
   .state('navigation', {
     url: '/navigation',
     template:
